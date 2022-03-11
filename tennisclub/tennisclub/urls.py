@@ -21,5 +21,20 @@ app_name = 'app'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index_view, name="index")
+    path('', views.index_view, name="index"),
+    path('kontakt/', views.kontakt_view, name="kontakt"),
+    path('verein/', views.verein_view, name="verein"),
+    path('verein/beitrag', views.beitrag_view, name="beitrag"),
+    path('verein/team', views.team_view, name="team"),
+    path('verein/heim', views.heim_view, name="heim"),
+    path('verein/termine', views.termine_view, name="termine"),
+    path('tennis/schule', views.schule_view, name="schule"),
+    path('tennis/courts', views.courts_view, name="courts"),
+    path('tennis/regeln', views.regeln_view, name="regeln"),
+    path('sitemap',views.sitemap_view, name='sitemap'),
+    path('impressum',views.impressum_view, name='impressum'),
+
+
+
+    
 ]

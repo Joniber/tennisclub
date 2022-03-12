@@ -223,3 +223,37 @@ footer p{
 
     margin: 0!important;
 }
+
+.termine{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.termine-funktion>button{
+  width: 2rem;
+  border-radius: 0 !important;
+}
+
+.termine-funktion {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.terminerstellen{
+  width: 100%;
+  padding: 10px;
+  height: fit-content;
+  border: 1px var(--default-color) solid;
+  margin: 5px 0px 5px 0px;
+}
+
+.modal-dialog{
+  margin-top: calc(10vh + .5rem);
+}
+
+.modal-header>button>span{
+  font-size: 2rem;
+}

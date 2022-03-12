@@ -1,6 +1,178 @@
 {% extends 'base.html' %}
 {% block content %}
 
+
 <h1>Termine</h1>
+
+{% for termin in termine %}
+<div class="termine">
+
+<div class="termine-card">
+<h3>{{termin.bezeichnung}}</h3>
+<p>Am {{termin.date}} um {{termin.time}}</p>
+<p>Standort: {{termin.location}}</p>
+</div>
+{% if user.is_superuser %}
+
+    <div class="termine-funktion">
+          <form action="/{{termin.uuid}}/terminbearbeiten" method="POST">
+            {% csrf_token %}
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-sm"
+              data-toggle="modal"
+              data-target="#editTerminModal{{termin.uuid}}"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+
+            <div
+              class="modal fade"
+              id="editTerminModal{{termin.uuid}}"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="editTerminModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5
+                      style="color: black"
+                      class="modal-title"
+                      id="editTerminModalTitle"
+                    >
+                      Termin bearbeiten
+                    </h5>
+
+                    <button
+                      class="close"
+                      style="
+                        background-color: transparent;
+                        outline: none;
+                        border: none;
+                      "
+                      type="button"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input
+                      type="text"
+                      name="editbezeichnung"
+                      maxlength="50"
+                      required=""
+                      id="id_bezeichnung"
+                      value="{{termin.bezeichnung}} "
+                    />
+                    <input type="date" name="editdate" id="id_date" >
+                    <input type="time" name="edittime" id="id_time" value="{{termin.time}}" >
+                    <input type="text" required name="editlocation" id="id_location" value="{{termin.location}}">
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Schließen
+                    </button>
+                    <button class="btn btn-primary" type="submit">
+                      Bearbeiten
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <form action="/{{termin.uuid}}/termindelete" method="POST">
+            {% csrf_token %}
+            <button
+              type="button"
+              class="btn btn-outline-danger btn-sm"
+              data-toggle="modal"
+              data-target="#deleteTerminModal{{termin.uuid}}"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+
+            <div
+              class="modal fade"
+              id="deleteTerminModal{{termin.uuid}}"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="deleteTerminModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5
+                      style="color: black"
+                      class="modal-title"
+                      id="deleteTerminModalTitle"
+                    >
+                      Termin löschen
+                    </h5>
+
+                    <button
+                      class="close"
+                      style="
+                        background-color: transparent;
+                        outline: none;
+                        border: none;
+                      "
+                      type="button"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <h6 style="color: black">Wirklich löschen?</h6>
+                    <h6 style="color: black">
+                      Der Termin wird endgültig gelöscht und kann nicht wiederhergestellt werden.
+                    </h6>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Schließen
+                    </button>
+                    <button class="btn btn-danger" type="submit">
+                      Löschen
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+{% endif %}
+</div>
+<hr>
+{% endfor %}
+
+
+{% if user.is_superuser %}
+<form action="/createtermin" class="terminerstellen" method="POST">
+    {% csrf_token %}
+    {{termineForm}}
+    <button class="btn btn-primary" type="submit">Erstellen</button>
+</form>
+
+{% endif %}
 
 {% endblock content %}

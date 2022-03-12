@@ -28,11 +28,17 @@ urlpatterns = [
     path('verein/team', views.team_view, name="team"),
     path('verein/heim', views.heim_view, name="heim"),
     path('verein/termine', views.termine_view, name="termine"),
+    path('createtermin', views.createtermin_view, name='createtermin'),
+    path('<str:uuid>/terminbearbeiten', views.terminedit_view, name='terminedit'),
+    path('<str:uuid>/termindelete', views.termindelete_view, name='deleteedit'),
+
     path('tennis/schule', views.schule_view, name="schule"),
     path('tennis/courts', views.courts_view, name="courts"),
     path('tennis/regeln', views.regeln_view, name="regeln"),
     path('sitemap',views.sitemap_view, name='sitemap'),
     path('impressum',views.impressum_view, name='impressum'),
+    path('login/', views.login_view, name="login"),
+
 
 
 

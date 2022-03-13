@@ -1,24 +1,19 @@
-{% extends 'base.html' %} {% block content %}
-
-<h1>Blog</h1>
-<hr />
-<div class="blogPosts">
-  {% for blogPost in blogPosts %}
-  <div class="blogPost">
-    <div class="blogPosts-card">
-      <a style="color:black; display: flex; flex-direction: column; align-items:center" href="/blog/{{blogPost.uuid}}"><h3>{{blogPost.titel}}</h3>
+{% extends 'base.html' %}
+{% block content %}
+<div class="blogPostDetail">
+<a style="color:black; position:fixed; right: 5px; top: 10vh" href="/blog"><i class="fas fa-arrow-left"></i>Zurück zur Blog Übersicht</a>
+<h1>{{blogPost.titel}}</h1>
       <img
       {% if blogPost.bild.url != '' %}
         src="../../static{{blogPost.bild.url}}"
         {% endif %}
         alt=""
-        style="width: 40%"
-      /></a>
-      <p>Von {{blogPost.autor}} am {{blogPost.date}}</p>
+        style="width: 60%; margin-left: auto; margin-right: auto; display: block"
+      />
+      <p>{{blogPost.inhalt}}</p>
+    <p>Von {{blogPost.autor}} am {{blogPost.date}}</p>
 
-      <p style="margin: 0;">{{blogPost.snippet}}</p>
-      <a style="margin-bottom: 5px;" href="/blog/{{blogPost.uuid}}">Weiterlesen</a>
-
+      <p>Standort: {{blogPost.standort}}</p>
     </div>
     {% if user.is_superuser %}
 
@@ -185,18 +180,5 @@
 
     {% endif %}
   </div>
-  {% endfor %}
 </div>
-
-{% if user.is_superuser %}
-<form
-  action="/createblogPost"
-  class="terminerstellen"
-  method="POST"
-  enctype="multipart/form-data"
->
-  {% csrf_token %} {{blogForm}}
-  <button class="btn btn-primary" type="submit">Erstellen</button>
-</form>
-
-{% endif %} {% endblock content %}
+{% endblock content %}

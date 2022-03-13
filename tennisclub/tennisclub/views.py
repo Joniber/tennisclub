@@ -135,3 +135,8 @@ def blogPostdelete_view(request, uuid ):
     if request.method=='POST' and request.user.is_superuser and blogPost.autor == request.user:
         blogPost.delete()
     return redirect('blog')
+
+def blogPostDetail_view(request, uuid):
+    blogPost = BlogPost.objects.get(uuid=uuid)
+
+    return render(request, 'blogPostDetail.html', {'blogPost': blogPost})

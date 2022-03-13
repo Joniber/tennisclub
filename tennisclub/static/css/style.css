@@ -269,7 +269,8 @@ footer p{
 .blogPosts{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  
+  margin-bottom: 10vh;
+  padding: 5px;
 }
 
 .blogPost{
@@ -278,5 +279,16 @@ footer p{
 
 .blogPost-funktion {
   display: flex;
+  justify-content: center;
   gap: 5px;
+}
+
+.blogPosts-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blogPostDetail {
+  padding: 5px;
 }

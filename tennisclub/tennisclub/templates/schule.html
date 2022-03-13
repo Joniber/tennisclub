@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
 <h1>Tennisschule</h1>
+
+<div>
+    <img src="{%static 'images/Petr_Brezina.jpg'%}" style="max-width:30%; padding:10px;">
+    <p> Geburtsdatum:	21.05.1960
+        Adresse:	Bahnstraße 35b, 96175 Pettstadt
+        Telefon:	0179-9757053
+        Ausbildung:	Tennislehrer Karls Universität Prag
+             BTV B-Lizenz
+             letzte Fortbildung November 2012
+    </p>
+</div>
 
 {% endblock content %}

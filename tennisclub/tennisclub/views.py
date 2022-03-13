@@ -140,3 +140,17 @@ def blogPostDetail_view(request, uuid):
     blogPost = BlogPost.objects.get(uuid=uuid)
 
     return render(request, 'blogPostDetail.html', {'blogPost': blogPost})
+
+def galerie_view(request):
+    galerie = Galerie.objects.all()
+    galerieForm = GalerieForm
+    return render(request, 'galerie.html', {'galerie': galerie, 'galerieForm': galerieForm})
+
+def addgaleriebild_view(request):
+    if request.method == 'POST':
+        galerieForm = GalerieForm(request.POST, request.FILES)
+        if galerieForm.is_valid() and request.user.is_superuser:
+            instance = galerieForm.save(commit=False)
+            instance.autor = request.user
+            instance.save()
+    return redirect('galerie')

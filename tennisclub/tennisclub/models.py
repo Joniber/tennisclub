@@ -36,7 +36,7 @@ class Galerie(models.Model):
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     beschreibung = models.CharField(blank=True, max_length=100)
     creation = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
-    date= models.DateField(verbose_name='Datum')
+    date= models.DateField(verbose_name='Datum', blank=True)
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     standort = models.CharField(blank=True, max_length=50)

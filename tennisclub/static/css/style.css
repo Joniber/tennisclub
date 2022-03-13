@@ -246,7 +246,7 @@ footer p{
 
 
 
-.terminerstellen{
+.terminerstellen, .add-galerie-bild{
   width: 100%;
   padding: 10px;
   height: fit-content;
@@ -291,4 +291,15 @@ footer p{
 
 .blogPostDetail {
   padding: 5px;
+}
+
+.galerie{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.galerie-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

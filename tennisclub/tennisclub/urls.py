@@ -51,6 +51,9 @@ urlpatterns = [
     path('login/', views.login_view, name="login"),
     
 
+    path('galerie/', views.galerie_view, name="galerie"),
+    path('addgaleriebild', views.addgaleriebild_view, name='addgaleriebild'),
+
 
 
     

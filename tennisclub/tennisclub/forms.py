@@ -24,3 +24,11 @@ class BlogForm(forms.ModelForm):
         widgets = {
             'date': DateInput(),
         }
+
+class GalerieForm(forms.ModelForm):
+    class Meta:
+        model = models.Galerie
+        fields = ('bild', 'date', 'beschreibung', 'standort')
+        widgets = {
+            'date': DateInput()
+        }

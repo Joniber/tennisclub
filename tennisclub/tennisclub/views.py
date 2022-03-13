@@ -59,6 +59,8 @@ def termindelete_view(request, uuid ):
 
 def schule_view(request):
     return render(request, 'schule.html')
+def anfahrt_view(request):
+    return render(request, 'anfahrt.html')
 def courts_view(request):
     return render(request, 'courts.html')
 def regeln_view(request):

@@ -89,3 +89,49 @@ def login_view(request):
     else:
         loginform = AuthenticationForm()
     return render(request, 'login.html', {'loginform':loginform})
+
+
+def blog_view(request):
+
+    blogForm = BlogForm()
+    blogPosts = BlogPost.objects.all().order_by('-creation')
+    print(blogPosts)
+
+    return render(request, 'blog.html', {'blogForm': blogForm, 'blogPosts': blogPosts})
+
+
+def createblogPost_view(request):
+
+    blogForm = BlogForm(request.POST, request.FILES)
+    print(blogForm)
+    if blogForm.is_valid() and request.user.is_superuser:
+        print('hello?')
+        instance = blogForm.save(commit=False)
+        instance.autor = request.user
+        instance.save()
+    return redirect('blog')
+
+def blogPostedit_view(request, uuid):
+    blogPost = BlogPost.objects.get(uuid=uuid)
+    if request.method=='POST' and request.user.is_superuser:
+        blogPost.titel = request.POST.get('edittitel')
+        blogPost.inhalt = request.POST.get('editinhalt')
+
+        if request.POST.get('editdate') != "":
+            blogPost.date = request.POST.get('editdate')
+        
+        if request.FILES.get('editbild') != "":
+            print(request.FILES.get('editbild'))
+            blogPost.bild = request.FILES.get('editbild')
+        print('Wenn du das hier alleine siehst hast du einen Fehler!')
+        blogPost.standort = request.POST.get('editstandort')
+        blogPost.save()
+        
+    return redirect('blog')
+
+def blogPostdelete_view(request, uuid ):
+    blogPost = BlogPost.objects.get(uuid=uuid)
+    
+    if request.method=='POST' and request.user.is_superuser and blogPost.autor == request.user:
+        blogPost.delete()
+    return redirect('blog')

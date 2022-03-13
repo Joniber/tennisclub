@@ -1,5 +1,4 @@
 menu = document.getElementById('menu')
-console.log('hello')
 
 menu.onclick = function (){
     document.getElementById('nav').classList.toggle('active')

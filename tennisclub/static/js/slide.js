@@ -5,7 +5,7 @@ let time = 4000;
 // images[0] = 'static/images/tennisschlaeger.jpg';
 images[0] = 'static/images/tennis1.jpg';
 images[1] = 'static/images/tennis-5782695.jpg';
-images[2] = 'static/images/ClubHaus_neu_350.jpg';
+images[2] = 'static/images/tennisballaufplatz.jpg';
 
 function changeImg() {
   document.slide.src = images[i];

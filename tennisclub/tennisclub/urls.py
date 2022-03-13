@@ -28,6 +28,7 @@ urlpatterns = [
     path('verein/team', views.team_view, name="team"),
     path('verein/heim', views.heim_view, name="heim"),
     path('verein/termine', views.termine_view, name="termine"),
+    path('verein/anfahrt/', views.anfahrt_view, name="anfahrt"),
     path('createtermin', views.createtermin_view, name='createtermin'),
     path('<str:uuid>/terminbearbeiten', views.terminedit_view, name='terminedit'),
     path('<str:uuid>/termindelete', views.termindelete_view, name='deleteedit'),
@@ -38,7 +39,7 @@ urlpatterns = [
     path('sitemap',views.sitemap_view, name='sitemap'),
     path('impressum',views.impressum_view, name='impressum'),
     path('login/', views.login_view, name="login"),
-
+    
 
 
 

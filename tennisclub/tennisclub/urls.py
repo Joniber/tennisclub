@@ -40,6 +40,7 @@ urlpatterns = [
     path('createblogPost', views.createblogPost_view, name='createblogPost'),
     path('<str:uuid>/blogPostbearbeiten', views.blogPostedit_view, name='blogPostedit'),
     path('<str:uuid>/blogPostdelete', views.blogPostdelete_view, name='blogPostdelete'),
+    path('blog/<str:uuid>', views.blogPostDetail_view, name='detail'),
 
 
     path('tennis/schule', views.schule_view, name="schule"),

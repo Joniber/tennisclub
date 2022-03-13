@@ -27,4 +27,7 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.titel[:30] + '...'
+
+    def snippet(self):
+        return self.inhalt[:75] + '...'
     

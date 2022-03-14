@@ -102,6 +102,10 @@ nav > ul {
     height: 0;
   }
 
+  .courts-link{
+    font-size: 15px !important;
+  }
+
   nav.active > ul {
     display: flex;
     flex-direction: column;
@@ -212,7 +216,7 @@ footer {
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 58vh;
+  bottom: 0;
   
   width: 100%;
   align-items: center;
@@ -273,9 +277,26 @@ footer p{
   padding: 5px;
 }
 
+.blogPostsHomepage{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 10vh;
+  padding: 5px;
+  width: 100%;
+}
+
+
+
 .blogPost{
   justify-self: center
 }
+
+.courts-link{
+  color:orange; 
+  font-size:30px;
+}
+
+
 
 .blogPost-funktion {
   display: flex;

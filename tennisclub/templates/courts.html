@@ -3,7 +3,8 @@
 
 {% block content %}
 <style>
-
+    *{
+    }
     .column {
         float: left;
         width: 33.33%;
@@ -11,7 +12,15 @@
       }
       
       /* Clear floats after image containers */
-      
+      {% comment %} .row::after {
+        content: "";
+        clear: both;
+        display: table;
+      } {% endcomment %}
+
+      .row1{
+        display: flex;
+      }
 </style>
 
 <h1>Tenniscourts</h1>
@@ -21,7 +30,7 @@
     Es ist verboten, das Vereinsheim mit Sandplatzschuhen zu betreten.
 </div>
 
-<div class="row">
+<div class="row1">
     <div class="column">
         <a href="/tennis/courts/teppichbodenhalle">
       <img src="{%static 'images/Teppichboden_Halle.jpg'%}"  style="width:100%;">
@@ -36,10 +45,10 @@
       <img src="{%static 'images/Freiplaetze_neu.jpg'%}"  style="width:100%; height:100%;">
     </div>
   </div>
-  <div class="row">
+  <div class="row1">
     <div class="column">
     <center>
-        <a style="color:orange; font-size:30px;" href="courts/teppichbodenhalle"> Teppichboden-Halle </a>
+        <a class="courts-link" href="courts/teppichbodenhalle"> Teppichboden-Halle </a>
       <p style="margin-left:10px;"> Zugang über das Kellergeschoss im Vereinsheim	 </p>
       <p style="margin-left:10px;"> saubere (sandlose) Schuhe </p>
       <a href="/tennis/courts/teppichboden_preise" >Preise </a>
@@ -50,7 +59,7 @@
     </div>
     <div class="column">
         <center>
-            <a style="color:orange; font-size:30px;" href="courts/traglufthalle"> Tragluft-Halle </a>
+            <a class="courts-link" href="courts/traglufthalle"> Tragluft-Halle </a>
             <p style="margin-left:10px;"> Zugang über die Gehwege hinter dem Clubhaus		 </p>
             <p style="margin-left:10px;"> Sandplatzschuhe </p>
             <a href="/tennis/courts/Traglufthalle_preise" > Preise </a>
@@ -61,7 +70,7 @@
     </div>
     <div class="column">
         <center>
-            <a style="color:orange; font-size:30px;cursor:default;" > Freiplätze </a>
+            <a class="courts-link" style="cursor:default;" > Freiplätze </a>
             <p style="margin-left:10px;"> Zugang über die Gehwege hinter dem Clubhaus		 </p>
             <p style="margin-left:10px;"> Sandplatzschuhe </p>
             <p style="margin:0; color:red">   nur für Mitglieder  </p>

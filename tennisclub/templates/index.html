@@ -43,7 +43,29 @@ Schaut euch um und fühlt euch wohl<br>
 Euer Präsident, <br>
 TCH
 </div>
+<div class="blogPostsHomepage">
+  {% for blogPost in blogPosts %}
+  <div class="blogPost">
+    <div class="blogPosts-card">
+      <a style="color:black; display: flex; flex-direction: column; align-items:center" href="/blog/{{blogPost.uuid}}"><h3>{{blogPost.titel}}</h3>
+      <img
+      {% if blogPost.bild.url != '' %}
+        src="../../static{{blogPost.bild.url}}"
+        {% endif %}
+        alt=""
+        style="width: 40%"
+      /></a>
+      <p>Von {{blogPost.autor}} am {{blogPost.date}}</p>
 
+      <p style="margin: 0;">{{blogPost.snippet}}</p>
+      <a style="margin-bottom: 5px;" href="/blog/{{blogPost.uuid}}">Weiterlesen</a>
+
+    </div>
+      </div>
+
+    {% endfor %}
+</div>
+</div>
  
     <footer>
       <div class="footer">

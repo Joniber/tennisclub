@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from datetime import date, timedelta
 from django.contrib.auth import login, logout
 from .models import *
 from .forms import *
 
 def index_view(request):
-    return render(request, 'index.html')
+    startdate = date.today()
+    enddate = startdate - timedelta(days=14)
+    blogPosts = BlogPost.objects.all().filter(date__range=[enddate, startdate])
+    return render(request, 'index.html', {'blogPosts': blogPosts})
 
 def kontakt_view(request):
     return render(request, 'kontakt.html')
@@ -130,8 +134,8 @@ def blogPostedit_view(request, uuid):
 
         if request.POST.get('editdate') != "":
             blogPost.date = request.POST.get('editdate')
-        
-        if request.FILES.get('editbild') != "":
+        print(request.FILES.get('editbild'))
+        if request.FILES.get('editbild') != None:
             print(request.FILES.get('editbild'))
             blogPost.bild = request.FILES.get('editbild')
         print('Wenn du das hier alleine siehst hast du einen Fehler!')

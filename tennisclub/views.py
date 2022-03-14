@@ -24,8 +24,9 @@ def heim_view(request):
     return render(request, 'heim.html')
 
 def termine_view(request):
-
+    
     termine = Termine.objects.all().order_by('date')
+    
 
     termineForm = TermineForm()
 

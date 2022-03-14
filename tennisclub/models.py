@@ -10,7 +10,6 @@ class Termine(models.Model):
     date = models.DateField(verbose_name='Datum')
     time = models.TimeField(verbose_name='Uhrzeit')
     location = models.CharField(max_length=100, verbose_name='Standort')
-    creation = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
 
     def __str__(self):
         return self.bezeichnung[:30] + '...'

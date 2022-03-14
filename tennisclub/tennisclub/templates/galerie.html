@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="galerie">
+    {% for bild in galerie %}
+    <div class="galerie-card">
+
+        <img width="50%" src="../static{{bild.bild.url}}" alt="">
+        <p> {% if bild.standort != "" and bild.standort != None %} Bild in {{bild.standort}} v{% else %}V{% endif %}on {{bild.autor}} am {{bild.date}} </p>
+        <p>{{bild.beschreibung}}</p>
+            </div>
+
+    {% endfor %}
+</div>
+
+
+{% if user.is_superuser %}
+<div class="add-galerie-bild">
+    <form action="/addgaleriebild" method="POST"         enctype="multipart/form-data"
+>
+{% csrf_token %}
+{{galerieForm}}
+<button type="submit" class="btn btn-primary">Erstellen</button>
+</form>
+</div>
+{% endif %}
+
+{% endblock content %}

@@ -57,6 +57,10 @@ urlpatterns = [
     path('tennis/courts/traglufthalle', views.courts_traglufthalle, name="courts_traglufthalle"),
     
 
+    path('galerie/', views.galerie_view, name="galerie"),
+    path('addgaleriebild', views.addgaleriebild_view, name='addgaleriebild'),
+
+
 
     
 ]

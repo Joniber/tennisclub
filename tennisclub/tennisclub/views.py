@@ -63,6 +63,17 @@ def anfahrt_view(request):
     return render(request, 'anfahrt.html')
 def courts_view(request):
     return render(request, 'courts.html')
+def courts_teppichboden_preise_view(request):
+    return render(request, 'courts_teppichboden_preise_view.html')
+def courts_Traglufthalle_preise_preise_view(request):
+    return render(request, 'courts_Traglufthalle_preise_preise_view.html')
+def courts_teppichbodenhalle(request):
+    return render(request, 'teppichbodenhalle.html')
+def courts_traglufthalle(request):
+    return render(request, 'traglufthalle.html')
+
+
+
 def regeln_view(request):
     return render(request, 'regeln.html')
 

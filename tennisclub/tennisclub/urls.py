@@ -50,7 +50,12 @@ urlpatterns = [
     path('impressum',views.impressum_view, name='impressum'),
     path('login/', views.login_view, name="login"),
     
-
+    path('tennis/courts/teppichboden_preise', views.courts_teppichboden_preise_view, name="teppichboden_preise"),
+    path('tennis/courts/Traglufthalle_preise', views.courts_Traglufthalle_preise_preise_view, name="Traglufthalle_preise"),
+    
+    path('tennis/courts/teppichbodenhalle', views.courts_teppichbodenhalle, name="courts_teppichbodenhalle"),
+    path('tennis/courts/traglufthalle', views.courts_traglufthalle, name="courts_traglufthalle"),
+    
 
 
     

@@ -131,7 +131,7 @@ def blogPostedit_view(request, uuid):
     if request.method=='POST' and request.user.is_superuser:
         blogPost.titel = request.POST.get('edittitel')
         blogPost.inhalt = request.POST.get('editinhalt')
-
+ 
         if request.POST.get('editdate') != "":
             blogPost.date = request.POST.get('editdate')
         print(request.FILES.get('editbild'))

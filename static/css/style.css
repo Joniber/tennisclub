@@ -153,6 +153,10 @@ nav > ul {
   .blogPostsHomepage .blogPost:last-child {
     border-bottom: 2px solid orange !important;
   }
+
+  .teamlist_card{
+    width: 90%;
+  }
 }
 
 .blogPostDetail {

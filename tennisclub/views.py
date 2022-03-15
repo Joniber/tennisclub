@@ -9,8 +9,12 @@ from .forms import *
 def index_view(request):
     startdate = date.today()
     enddate = startdate - timedelta(days=14)
-    blogPosts = BlogPost.objects.all().filter(date__range=[enddate, startdate])
-    return render(request, 'index.html', {'blogPosts': blogPosts})
+    blogPosts = BlogPost.objects.all().filter(date__range=[enddate, startdate]).order_by('-date')[:3]
+    termineenddate = startdate + timedelta(days=14)
+    nextTermin = Termine.objects.all().filter(date__range=[startdate, termineenddate]).order_by('date')[:1].first()
+    print(termineenddate)
+    print(nextTermin)
+    return render(request, 'index.html', {'blogPosts': blogPosts, 'termin': nextTermin})
 
 def kontakt_view(request):
     return render(request, 'kontakt.html')
@@ -110,7 +114,7 @@ def login_view(request):
 def blog_view(request):
 
     blogForm = BlogForm()
-    blogPosts = BlogPost.objects.all().order_by('-creation')
+    blogPosts = BlogPost.objects.all().order_by('-date')
     print(blogPosts)
 
     return render(request, 'blog.html', {'blogForm': blogForm, 'blogPosts': blogPosts})

@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
+<a style="color:black; position:relative; left: 5px; top: 0vh" href="/blog"><i class="fas fa-arrow-left"></i>Blog Übersicht</a>
+
 <div class="blogPostDetail">
-<a style="color:black; position:fixed; right: 5px; top: 10vh" href="/blog"><i class="fas fa-arrow-left"></i>Zurück zur Blog Übersicht</a>
 <h1>{{blogPost.titel}}</h1>
       <img
       {% if blogPost.bild.url != '' %}
         src="../../static{{blogPost.bild.url}}"
         {% endif %}
         alt=""
-        style="width: 60%; margin-left: auto; margin-right: auto; display: block"
+        style="height: 50vh"
       />
       <p>{{blogPost.inhalt}}</p>
     <p>Von {{blogPost.autor}} am {{blogPost.date}}</p>

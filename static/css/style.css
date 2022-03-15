@@ -6,21 +6,22 @@
 
 html {
   scroll-behavior: smooth;
-    min-height: 100%;
-
-
+  min-height: 100%;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--font-color);
-    min-height: 100% !important;
-
+  min-height: 100% !important;
 }
 
 ul {
   margin: 0 !important;
   padding: 0 !important;
+}
+
+nav a{
+  color: initial;
 }
 
 header {
@@ -36,6 +37,10 @@ header {
   padding: 0px 10px 0px 0px;
 }
 
+header h2 {
+  margin: 0;
+}
+
 #logo {
   width: 50px;
   border-radius: 100%;
@@ -44,7 +49,6 @@ header {
 .wrapper {
   padding-top: 10vh;
   height: 100% !important;
-
 }
 
 .logo {
@@ -102,7 +106,7 @@ nav > ul {
     height: 0;
   }
 
-  .courts-link{
+  .courts-link {
     font-size: 15px !important;
   }
 
@@ -121,7 +125,8 @@ nav > ul {
     width: 100vw;
   }
 
-  .fa-bars, .fa-times {
+  .fa-bars,
+  .fa-times {
     display: block !important;
   }
 
@@ -131,6 +136,26 @@ nav > ul {
   .footer > ul {
     text-align: center;
   }
+
+  .blogPostsHomepage {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .blogPostsHomepage .blogPost {
+    border-right: 2px solid orange !important;
+    border-bottom: 0 !important;
+  }
+
+  .blogPostsHomepage .blogPost:last-child {
+    border-bottom: 2px solid orange !important;
+  }
+}
+
+.blogPostDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .fa-bars {
@@ -165,12 +190,13 @@ nav > ul {
   justify-content: center;
   align-items: center;
   color: white;
-  text-shadow: 2px 2px black ;
+  text-shadow: 2px 2px black;
 }
 
 .willkommenstext {
   background-color: var(--bg-color);
   padding: 20px;
+  padding-top: 10vh;
 }
 
 .sitemap {
@@ -204,8 +230,7 @@ nav > ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
-    width: 100%;
-
+  width: 100%;
 }
 
 footer {
@@ -217,27 +242,27 @@ footer {
   flex-direction: column;
   position: relative;
   bottom: 0;
-  
+
   width: 100%;
   align-items: center;
   justify-content: space-between;
 }
-footer p{
-    color: grey;
-    padding: 0 !important;
-        padding-top: 10px !important;
+footer p {
+  color: grey;
+  padding: 0 !important;
+  padding-top: 10px !important;
 
-    margin: 0!important;
+  margin: 0 !important;
 }
 
-.termine{
+.termine {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
 }
 
-.termine-funktion>button{
+.termine-funktion > button {
   width: 2rem;
   border-radius: 0 !important;
 }
@@ -248,9 +273,8 @@ footer p{
   gap: 5px;
 }
 
-
-
-.terminerstellen, .add-galerie-bild{
+.terminerstellen,
+.add-galerie-bild {
   width: 100%;
   padding: 10px;
   height: fit-content;
@@ -262,22 +286,24 @@ footer p{
   z-index: 1000000;
 }
 
-.modal-dialog{
-  margin-top: calc(10vh + .5rem);
+
+
+.modal-dialog {
+  margin-top: calc(10vh + 0.5rem);
 }
 
-.modal-header>button>span{
+.modal-header > button > span {
   font-size: 2rem;
 }
 
-.blogPosts{
+.blogPosts {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-bottom: 10vh;
   padding: 5px;
 }
 
-.blogPostsHomepage{
+.blogPostsHomepage {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 10vh;
@@ -287,18 +313,35 @@ footer p{
   z-index: 100;
 }
 
-
-
-.blogPost{
-  justify-self: center
+.blogPostsHomepage .blogPost {
+  border-left: 2px solid var(--default-color);
+  border-top: 2px solid var(--default-color);
+  border-bottom: 2px solid var(--default-color);
+  padding: 5px;
 }
 
-.courts-link{
-  color:orange; 
-  font-size:30px;
+.blogPostsHomepage .blogPost:last-child {
+  border-right: 2px solid orange !important;
 }
 
+.blogPostsHomepage .blogPost .blogPosts-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
 
+.blogPost {
+  justify-self: center;
+}
+
+.courts-link {
+  color: orange;
+  font-size: 30px;
+}
 
 .blogPost-funktion {
   display: flex;
@@ -306,7 +349,7 @@ footer p{
   gap: 5px;
 }
 
-.blogPosts-card{
+.blogPosts-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -316,13 +359,26 @@ footer p{
   padding: 5px;
 }
 
-.galerie{
+.galerie {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.galerie-card{
+.galerie-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.nexttermin {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.termine-card{
+  display: flex;
+  flex-direction: column;
 }

@@ -155,7 +155,7 @@ nav > ul {
   }
 
   .teamliste_card{
-    width: 90%;
+    width: 90% !important;
   }
 }
 

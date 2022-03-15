@@ -382,9 +382,13 @@ footer p {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding: 10px 0 10px 0;
+}
+.teamliste p{
+  margin: 0;
 }
 .teamliste_card{
-  width: 50%;
+  width: 70%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -393,6 +397,10 @@ footer p {
 .teamliste_info{
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+}
+.teamliste_info p {
+  margin: 0;
 }
 
 .team_images{

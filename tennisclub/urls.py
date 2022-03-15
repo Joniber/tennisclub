@@ -26,7 +26,7 @@ urlpatterns = [
     path('verein/', views.verein_view, name="verein"),
     path('verein/beitrag', views.beitrag_view, name="beitrag"),
     path('verein/team', views.team_view, name="team"),
-    path('verein/heim', views.heim_view, name="heim"),
+    path('verein/rückblick', views.rückblick_view, name="rückblick"),
 
 
     path('verein/termine', views.termine_view, name="termine"),

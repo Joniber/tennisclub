@@ -24,7 +24,7 @@ def beitrag_view(request):
 
 def team_view(request):
     return render(request, 'team.html')
-def heim_view(request):
+def rückblick_view(request):
     return render(request, 'heim.html')
 
 def termine_view(request):

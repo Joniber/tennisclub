@@ -19,11 +19,11 @@ ul {
   margin: 0 !important;
   padding: 0 !important;
 }
-a{
-  color:orange;
+a {
+  color: orange;
 }
 
-nav a{
+nav a {
   color: blue;
 }
 
@@ -154,8 +154,13 @@ nav > ul {
     border-bottom: 2px solid orange !important;
   }
 
-  .teamliste_card{
+  .teamliste_card {
     width: 90% !important;
+  }
+
+  .traglufthalle img {
+    width: 90% !important;
+    height: initial !important;
   }
 }
 
@@ -293,8 +298,6 @@ footer p {
   z-index: 1000000;
 }
 
-
-
 .modal-dialog {
   margin-top: calc(10vh + 0.5rem);
 }
@@ -377,24 +380,23 @@ footer p {
   align-items: center;
 }
 
-.teamliste{
+.teamliste {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 10px 0 10px 0;
 }
-.teamliste p{
+.teamliste p {
   margin: 0;
 }
-.teamliste_card{
+.teamliste_card {
   width: 70%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
 }
-.teamliste_info{
+.teamliste_info {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -403,7 +405,7 @@ footer p {
   margin: 0;
 }
 
-.team_images{
+.team_images {
   width: 10vw;
 }
 .nexttermin {
@@ -414,7 +416,31 @@ footer p {
   text-align: center;
 }
 
-.termine-card{
+.termine-card {
   display: flex;
   flex-direction: column;
+}
+
+.traglufthalle {
+  display: flex;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.traglufthalle_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+  max-width: 50%;
+}
+
+.traglufthalle img {
+  height: 70vh;
+  padding-right: 15px;
+}
+
+.traglufthalle_intro {
+  padding-left: 15px;
 }

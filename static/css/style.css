@@ -283,6 +283,8 @@ footer p{
   margin-bottom: 10vh;
   padding: 5px;
   width: 100%;
+  background-color: white;
+  z-index: 100;
 }
 
 

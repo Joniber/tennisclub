@@ -19,6 +19,9 @@ ul {
   margin: 0 !important;
   padding: 0 !important;
 }
+a{
+  color:orange;
+}
 
 nav a{
   color: blue;
@@ -370,6 +373,27 @@ footer p {
   align-items: center;
 }
 
+.teamliste{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.teamliste_card{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.teamliste_info{
+  display: flex;
+  flex-direction: column;
+}
+
+.team_images{
+  width: 10vw;
+}
 .nexttermin {
   width: 100%;
   display: flex;

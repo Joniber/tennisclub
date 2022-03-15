@@ -1,7 +1,100 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
-<h1>Team</h1>
+<div class="teamliste">
+    <div class="teamliste_card">
+        <img src="{%static 'images/Peter_Popp.jpg'%}" class="team_images">
+        <p> Vorstand A </p>
+        <div class="teamliste_info">
+            <p>
+            Peter Popp </p>
+            <p>
+            Mobil: 0176-20455175 </p>
+            
+
+            <a href = "mailto: v1@tc-hallstadt.de"> Mail </a>
+        </div>
+        
+
+    </div>
+
+    <div class="teamliste_card">
+        <img src="{%static 'images/Stephan_Dillig.jpg'%}" class="team_images">
+        <p> Vorstand B </p>
+        <div class="teamliste_info">
+            <p>
+            Stephan Dillig </p>
+            <p>
+                Mobil: 0172-1631373 </p>
+            
+
+            <a href = "mailto: v2@tc-hallstadt.de"> Mail </a>
+        </div>
+    </div>
+
+
+
+    <div class="teamliste_card">
+        <img src="{%static 'images/Kerstin_Friedmann.jpg'%}" class="team_images">
+        <p> Vorstand C (Finanzvorstand) </p>
+        <div class="teamliste_info">
+            <p>
+            Kestin Friedmann </p>
+            <p>
+                Mobil: 0176-83027724 </p>
+            
+
+            <a href = "mailto: finanzen@tc-hallstadt.de"> Mail </a>
+        </div>
+    </div>
+
+    <div class="teamliste_card">
+        <img src="{%static 'images/Renate_Koenig.jpg'%}" class="team_images">
+        <p> Vorstand D (Sportvorstand) </p>
+        <div class="teamliste_info">
+            <p>
+            Renate König </p>
+            <p>
+                Mobil: 0178-1608933 </p>
+            
+
+            <a href = "mailto: sv@tc-hallstadt.de"> Mail </a>
+        </div>
+    </div>
+
+    <div class="teamliste_card">
+        <img src="{%static 'images/Dennis_Luga.jpg'%}" class="team_images">
+        <p> 1. Sportwart </p>
+        <div class="teamliste_info">
+            <p>
+            Dennis Luga </p>
+            <p>
+                Mobil: 0157-588003 </p>
+            
+
+            <a href = "mailto: sw@tc-hallstadt.de"> Mail </a>
+        </div>
+    </div>
+
+    <div class="teamliste_card">
+        <img src="{%static 'images/Niklas_Friedmann.jpg'%}" class="team_images">
+        <p> 2. Sportwart </p>
+        <div class="teamliste_info">
+            <p>
+            Niklas Friedmann </p>
+            <p>
+                Mobil: 0151-68833341 </p>
+            
+
+            <a href = "mailto: sw@tc-hallstadt.de"> Mail </a>
+        </div>
+    </div>
+
+
+
+</div>
+
+
 
 {% endblock content %}

@@ -395,6 +395,7 @@ footer p {
   
 }
 .teamliste_info{
+  width: 20vw;
   display: flex;
   flex-direction: column;
   align-items: flex-end;

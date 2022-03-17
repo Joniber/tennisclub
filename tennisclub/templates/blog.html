@@ -2,10 +2,10 @@
 
 <h1>Blog</h1>
 <hr />
-<div class="blogPosts">
+<div class="blog_posts">
   {% for blogPost in blogPosts %}
-  <div class="blogPost">
-    <div class="blogPosts-card">
+  <div class="blog_post">
+    <div class="blog_post_card">
       <a style="color:black; display: flex; flex-direction: column; align-items:center" href="/blog/{{blogPost.uuid}}"><h3>{{blogPost.titel}}</h3>
       <img
       {% if blogPost.bild.url != '' %}
@@ -22,7 +22,7 @@
     </div>
     {% if user.is_superuser %}
 
-    <div class="blogPost-funktion">
+    <div class="blog_post_funktion">
       <form
         action="/{{blogPost.uuid}}/blogPostbearbeiten"
         method="POST"
@@ -191,7 +191,7 @@
 {% if user.is_superuser %}
 <form
   action="/createblogPost"
-  class="terminerstellen"
+  class="termin_erstellen"
   method="POST"
   enctype="multipart/form-data"
 >

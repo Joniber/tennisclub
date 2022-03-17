@@ -5,16 +5,16 @@
 <h1>Termine</h1>
 <hr>
 {% for termin in termine %}
-<div class="termine">
+<div class="termin">
 
-<div class="termine-card">
+<div class="termin_card">
 <h3>{{termin.bezeichnung}}</h3>
 <p>Am {{termin.date}} um {{termin.time}}</p>
 <p>Standort: {{termin.location}}</p>
 </div>
 {% if user.is_superuser %}
 
-    <div class="termine-funktion">
+    <div class="termin_funktion">
           <form action="/{{termin.uuid}}/terminbearbeiten" method="POST">
             {% csrf_token %}
             <button
@@ -167,7 +167,7 @@
 
 
 {% if user.is_superuser %}
-<form action="/createtermin" class="terminerstellen" method="POST">
+<form action="/createtermin" class="termin_erstellen" method="POST">
     {% csrf_token %}
     {{termineForm}}
     <button class="btn btn-primary" type="submit">Erstellen</button>

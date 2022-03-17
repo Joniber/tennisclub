@@ -2,7 +2,7 @@
 {% block content %}
 <a style="color:black; position:relative; left: 5px; top: 0vh" href="/blog"><i class="fas fa-arrow-left"></i>Blog Übersicht</a>
 
-<div class="blogPostDetail">
+<div class="blog_post_detail">
 <h1>{{blogPost.titel}}</h1>
       <img
       {% if blogPost.bild.url != '' %}
@@ -18,7 +18,7 @@
     </div>
     {% if user.is_superuser %}
 
-    <div class="blogPost-funktion">
+    <div class="blog_post_funktion">
       <form
         action="/{{blogPost.uuid}}/blogPostbearbeiten"
         method="POST"

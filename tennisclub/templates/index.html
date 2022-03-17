@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <div class="slide">
-  <img class="slideimg" name="slide" />
-  <div class="main-link">
+  <img class="slide_bild" name="slide" />
+  <div class="main_link">
     <h1>Willkommen beim TC Hallstadt</h1>
     <a href="#willkommen"
       ><button class="btn btn-info btn-big">Legen Sie direkt los.</button></a
@@ -59,10 +59,10 @@ Die Küche ist großzügig angelegt, technisch auf dem neuesten Stand, wobei ich
   Euer Präsident, <br />
   TCH
 </div>
-<div class="blogPostsHomepage">
+<div class="blog_posts_homepage">
   {% for blogPost in blogPosts %}
-  <div class="blogPost">
-    <div class="blogPosts-card">
+  <div class="blog_post">
+    <div class="blog_post_card">
       <a
         style="
           color: black;
@@ -99,8 +99,8 @@ Die Küche ist großzügig angelegt, technisch auf dem neuesten Stand, wobei ich
 
 {% if termin != None %}
 
-<div class="nexttermin">
-  <div class="termine-card">
+<div class="naechster_termin">
+  <div class="termin_card">
     <h1 style="margin-bottom: 10px">Nächster Termin:</h1>
     <h3>{{termin.bezeichnung}}</h3>
     <p>Am {{termin.date}} um {{termin.time}}</p>

@@ -59,7 +59,7 @@ header h2 {
   gap: 15px;
   padding-left: 10px;
 }
-.logo-name {
+.logo_name {
   font-size: 3vmin;
 }
 
@@ -108,7 +108,7 @@ nav > ul {
     height: 0;
   }
 
-  .courts-link {
+  .courts_link {
     font-size: 15px !important;
   }
 
@@ -140,17 +140,17 @@ nav > ul {
     text-align: center;
   }
 
-  .blogPostsHomepage {
+  .blog_posts_homepage {
     display: flex !important;
     flex-direction: column;
   }
 
-  .blogPostsHomepage .blogPost {
+  .blog_posts_homepage .blog_post {
     border-right: 2px solid orange !important;
     border-bottom: 0 !important;
   }
 
-  .blogPostsHomepage .blogPost:last-child {
+  .blog_posts_homepage .blog_post:last-child {
     border-bottom: 2px solid orange !important;
   }
 
@@ -164,7 +164,7 @@ nav > ul {
   }
 }
 
-.blogPostDetail {
+.blog_post_detail {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -183,7 +183,7 @@ nav > ul {
   display: none;
 }
 
-.slideimg {
+.slide_bild {
   width: 100%;
   z-index: -1;
   position: relative;
@@ -191,7 +191,7 @@ nav > ul {
   pointer-events: none;
 }
 
-.slide .main-link {
+.slide .main_link {
   position: absolute;
   top: 11vh;
   right: 10px;
@@ -218,20 +218,20 @@ nav > ul {
   padding-top: 10vh;
 }
 
-.sitemap-card {
+.sitemap_card {
   display: flex;
   flex-direction: column;
 }
 
-.sitemap-card button {
+.sitemap_card button {
   border-radius: 0 !important;
 }
 
-.sitemap-img {
+.sitemap_img {
   width: 100%;
 }
 
-.sitemap-link {
+.sitemap_link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,26 +267,26 @@ footer p {
   margin: 0 !important;
 }
 
-.termine {
+.termin {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
 }
 
-.termine-funktion > button {
+.termin_funktion > button {
   width: 2rem;
   border-radius: 0 !important;
 }
 
-.termine-funktion {
+.termin_funktion {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.terminerstellen,
-.add-galerie-bild {
+.termin_erstellen,
+.galerie_bild_hinzufuegen {
   width: 100%;
   padding: 10px;
   height: fit-content;
@@ -306,14 +306,14 @@ footer p {
   font-size: 2rem;
 }
 
-.blogPosts {
+.blog_posts {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-bottom: 10vh;
   padding: 5px;
 }
 
-.blogPostsHomepage {
+.blog_posts_homepage {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 10vh;
@@ -323,18 +323,18 @@ footer p {
   z-index: 100;
 }
 
-.blogPostsHomepage .blogPost {
+.blog_posts_homepage .blog_post {
   border-left: 2px solid var(--default-color);
   border-top: 2px solid var(--default-color);
   border-bottom: 2px solid var(--default-color);
   padding: 5px;
 }
 
-.blogPostsHomepage .blogPost:last-child {
+.blog_posts_homepage .blog_post:last-child {
   border-right: 2px solid orange !important;
 }
 
-.blogPostsHomepage .blogPost .blogPosts-card {
+.blog_posts_homepage .blog_post .blog_post_card {
   width: 100%;
   height: 100%;
   display: flex;
@@ -344,28 +344,28 @@ footer p {
   text-align: center;
 }
 
-.blogPost {
+.blog_post {
   justify-self: center;
 }
 
-.courts-link {
+.courts_link {
   color: orange;
   font-size: 30px;
 }
 
-.blogPost-funktion {
+.blog_post_funktion {
   display: flex;
   justify-content: center;
   gap: 5px;
 }
 
-.blogPosts-card {
+.blog_post_card {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.blogPostDetail {
+.blog_post_detail {
   padding: 5px;
 }
 
@@ -374,7 +374,7 @@ footer p {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.galerie-card {
+.galerie_card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -409,7 +409,7 @@ footer p {
 .team_images {
   width: 10vw;
 }
-.nexttermin {
+.naechster_termin {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -417,7 +417,7 @@ footer p {
   text-align: center;
 }
 
-.termine-card {
+.termin_card {
   display: flex;
   flex-direction: column;
 }

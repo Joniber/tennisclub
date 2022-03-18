@@ -196,16 +196,41 @@
 </div>
 
 {% if user.is_superuser %}
+<div class="termin_erstellen">
 <form
   action="/createblogPost"
-  class="termin_erstellen"
   method="POST"
   enctype="multipart/form-data"
+  id="blog_post_hinzufuegen_wrapper"
 >
   {% csrf_token %} {{blogForm}}
     <p style="display:inline-block"> * : erforderlich</p>
 
   <button class="btn btn-primary btn-sm" type="submit">Erstellen</button>
+        <i style="position: absolute; right:5px; top: 5px; color: red; cursor: pointer; font-size: 20px " class="fas fa-times-circle" style="color: red" id="blog_post_hinzufuegen_close"></i>
+
 </form>
+<div class="short_hinzufuegen hidden" style="cursor: pointer;" id="blog_post_short_hinzufuegen">
+      <i class="fas fa-plus"></i> Blog Post hinzufügen
+    </div>
+</div>
 
 {% endif %} {% endblock content %}
+{% block script %}
+<script>
+
+  close = document.getElementById('blog_post_hinzufuegen_close')
+  show = document.getElementById('blog_post_short_hinzufuegen')
+
+  close.onclick = function(){
+    document.getElementById('blog_post_hinzufuegen_wrapper').classList.add('hidden')
+    show.classList.remove('hidden')
+  }
+  show.onclick = function(){
+      document.getElementById('blog_post_hinzufuegen_wrapper').classList.remove('hidden')
+      show.classList.add('hidden')
+
+  }
+
+</script>
+{% endblock script %}

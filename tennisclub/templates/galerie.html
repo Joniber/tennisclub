@@ -16,8 +16,8 @@
         <img width="50%" src="../static{{bild.bild.url}}" alt="">
         <p> {% if bild.standort != "" and bild.standort != None %} Bild in {{bild.standort}} v{% else %}V{% endif %}on {{bild.autor}} {% if bild.date != None and bild.date != "" %} am {{bild.date}}{% endif %} </p>
         {% if bild.beschreibung != None and bild.beschreibung != "" %}<p>{{bild.beschreibung}}</p>{% endif %}
-        
-            <div class="blog_post_funktion">
+        {% if user.is_superuser %}
+            <div class="blog_post_funktion" >
       <form
         action="/{{bild.uuid}}/galeriebildbearbeiten"
         method="POST"
@@ -174,6 +174,8 @@
         </div>
       </form>
     </div>
+   
+    {% endif %}
             </div>
 
     {% endfor %}
@@ -182,16 +184,40 @@
 
 {% if user.is_superuser %}
 <div class="galerie_bild_hinzufuegen">
-    <form action="/addgaleriebild" method="POST" enctype="multipart/form-data"
+    <form  id="galerie_bild_hinzufuegen_wrapper" action="/addgaleriebild" method="POST" enctype="multipart/form-data"
 >
 {% csrf_token %}
 {{galerieForm}}
   <p style="display:inline-block">* : erforderlich</p>
 
 <button type="submit" class="btn btn-primary btn-sm">Erstellen</button>
+      <i style="position: absolute; right:5px; top: 5px; color: red; cursor: pointer; font-size: 20px " class="fas fa-times-circle" style="color: red" id="galerie_bild_hinzufuegen_close"></i>
 
 </form>
+ <div class="short_hinzufuegen hidden" style="cursor: pointer;" id="galerie_bild_short_hinzufuegen">
+      <i class="fas fa-plus"></i> Galeriebild hinzufügen
+    </div>
 </div>
 {% endif %}
 
+
 {% endblock content %}
+
+{% block script %}
+<script>
+
+  close = document.getElementById('galerie_bild_hinzufuegen_close')
+  show = document.getElementById('galerie_bild_short_hinzufuegen')
+
+  close.onclick = function(){
+    document.getElementById('galerie_bild_hinzufuegen_wrapper').classList.add('hidden')
+    show.classList.remove('hidden')
+  }
+  show.onclick = function(){
+      document.getElementById('galerie_bild_hinzufuegen_wrapper').classList.remove('hidden')
+      show.classList.add('hidden')
+
+  }
+
+</script>
+{% endblock script %}

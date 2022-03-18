@@ -196,6 +196,12 @@ nav > ul {
   }
 }
 
+
+
+.hidden{
+   display: none !important;
+ }
+
 .galerie_kein_bild{
   display: flex;
   flex-direction: column;
@@ -331,7 +337,6 @@ footer p {
 .termin_erstellen,
 .galerie_bild_hinzufuegen {
   width: 100%;
-  padding: 10px;
   height: fit-content;
   border: 3px var(--default-color) solid;
   margin-top: 5px;
@@ -345,10 +350,13 @@ footer p {
   width: 100%;
   height: 100%;
   display: flex;
+    padding: 10px;
+
   gap: 5px;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  padding-right: 30px
 }
 .galerie_bild_hinzufuegen p, .termin_erstellen p {
   margin-bottom: 0 !important;
@@ -429,6 +437,7 @@ footer p {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding-top: 10px;
+  margin-bottom: 10vh;
 }
 
 .galerie_card {

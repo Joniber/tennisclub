@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 import uuid
 
 class Termine(models.Model):
-    bezeichnung = models.CharField(max_length=50, verbose_name='Bezeichnung')
+    bezeichnung = models.CharField(max_length=50, verbose_name='Bezeichnung *')
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    date = models.DateField(verbose_name='Datum')
+    date = models.DateField(verbose_name='Datum *')
     time = models.TimeField(verbose_name='Uhrzeit', blank=True)
     location = models.CharField(max_length=100, verbose_name='Standort', blank=True)
 
@@ -15,13 +15,13 @@ class Termine(models.Model):
         return self.bezeichnung[:30] + '...'
 
 class BlogPost(models.Model):
-    titel = models.CharField(max_length=50)
+    titel = models.CharField(max_length=50, verbose_name='Titel *')
     creation = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
-    inhalt = models.CharField(max_length=2000)
+    inhalt = models.CharField(max_length=2000, verbose_name='Inhalt *')
     bild = models.ImageField(blank=True, default="tennisball.png")
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    date= models.DateField(verbose_name='Datum')
+    date= models.DateField(verbose_name='Datum *')
     standort = models.CharField(max_length=50, blank=True)
 
     def __str__(self):

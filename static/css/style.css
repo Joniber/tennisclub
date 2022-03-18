@@ -144,6 +144,11 @@ nav > ul {
     display: flex !important;
     flex-direction: column;
   }
+  .blog_posts{
+    grid-template-columns: 1fr !important;
+    margin-bottom: 0vh !important;
+  }
+
 
   .blog_posts_homepage .blog_post {
     border-right: 2px solid orange !important;
@@ -177,6 +182,11 @@ nav > ul {
   .traglufthalle img {
     width: 90% !important;
     height: initial !important;
+  }
+
+  .termin_erstellen{
+    position: relative !important;
+    bottom: 0;
   }
 }
 
@@ -461,3 +471,4 @@ footer p {
 .traglufthalle_intro {
   padding-left: 15px;
 }
+

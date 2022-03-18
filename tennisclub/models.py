@@ -8,8 +8,8 @@ class Termine(models.Model):
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date = models.DateField(verbose_name='Datum *')
-    time = models.TimeField(verbose_name='Uhrzeit', blank=True)
-    location = models.CharField(max_length=100, verbose_name='Standort', blank=True)
+    time = models.TimeField(verbose_name='Uhrzeit', blank=True, null=True)
+    location = models.CharField(max_length=100, verbose_name='Standort', blank=True, null=True)
 
     def __str__(self):
         return self.bezeichnung[:30] + '...'
@@ -22,7 +22,7 @@ class BlogPost(models.Model):
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date= models.DateField(verbose_name='Datum *')
-    standort = models.CharField(max_length=50, blank=True)
+    standort = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.titel[:30] + '...'
@@ -31,12 +31,12 @@ class BlogPost(models.Model):
         return self.inhalt[:75] + '...'
 
 class Galerie(models.Model):
-    bild = models.ImageField()
+    bild = models.ImageField(verbose_name='Bild *')
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
-    beschreibung = models.CharField(blank=True, max_length=100)
+    beschreibung = models.CharField(blank=True, max_length=100, verbose_name='Beschreibung', null=True)
     creation = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
-    date= models.DateField(verbose_name='Datum', blank=True)
+    date= models.DateField(verbose_name='Datum', blank=True, null=True)
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    standort = models.CharField(blank=True, max_length=50)
+    standort = models.CharField(blank=True, max_length=50, verbose_name='Standort', null=True)
     

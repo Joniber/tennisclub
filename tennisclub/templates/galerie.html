@@ -1,14 +1,179 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 
 <div class="galerie">
+    {%if galerie.count == 0%}
+    <div class="galerie_kein_bild">
+    <img style="display: block; margin-left: auto; margin-right:auto" src="{%static 'images/iconmonstr-magnifier-2-240.png'%}" alt="">
+    <h1>Kein Bild hinzugefügt.</h1>
+    </div>
+    {% endif %}
     {% for bild in galerie %}
     <div class="galerie_card">
 
         <img width="50%" src="../static{{bild.bild.url}}" alt="">
-        <p> {% if bild.standort != "" and bild.standort != None %} Bild in {{bild.standort}} v{% else %}V{% endif %}on {{bild.autor}} am {{bild.date}} </p>
-        <p>{{bild.beschreibung}}</p>
+        <p> {% if bild.standort != "" and bild.standort != None %} Bild in {{bild.standort}} v{% else %}V{% endif %}on {{bild.autor}} {% if bild.date != None and bild.date != "" %} am {{bild.date}}{% endif %} </p>
+        {% if bild.beschreibung != None and bild.beschreibung != "" %}<p>{{bild.beschreibung}}</p>{% endif %}
+        
+            <div class="blog_post_funktion">
+      <form
+        action="/{{bild.uuid}}/galeriebildbearbeiten"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <button
+          type="button"
+          class="btn btn-outline-primary btn-sm"
+          data-toggle="modal"
+          data-target="#editGalerieBildModal{{bild.uuid}}"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+
+        <div
+          class="modal fade"
+          id="editGalerieBildModal{{bild.uuid}}"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="editGalerieBildModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5
+                  style="color: black"
+                  class="modal-title"
+                  id="editGalerieBildModalTitle"
+                >
+                  GalerieBild bearbeiten
+                </h5>
+
+                <button
+                  class="close"
+                  style="
+                    background-color: transparent;
+                    outline: none;
+                    border: none;
+                  "
+                  type="button"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input
+                  type="text"
+                  name="editbeschreibung"
+                  maxlength="200"
+                  id="id_beschreibung"
+                  {% if bild.beschreibung == None %}value=""{% else %}
+                  value="{{bild.beschreibung}}"
+                  {% endif %}
+                />
+
+                
+                <input type="date" name="editdate" id="id_date" />
+                Standort: <input
+                  type="text"
+                  
+                  name="editstandort"
+                  id="id_standort"
+                                    {% if bild.standort == None %}value=""{% else %}
+
+                  value="{{bild.standort}}"
+                  {% endif %}
+                />
+                <input type="file" name="editbild" id="id_bild" />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Schließen
+                </button>
+                <button class="btn btn-primary" type="submit">
+                  Bearbeiten
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <form action="/{{bild.uuid}}/galeriebilddelete" method="POST">
+        {% csrf_token %}
+        <button
+          type="button"
+          class="btn btn-outline-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteGalerieBildModal{{bild.uuid}}"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+
+        <div
+          class="modal fade"
+          id="deleteGalerieBildModal{{bild.uuid}}"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="deleteGalerieBildModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5
+                  style="color: black"
+                  class="modal-title"
+                  id="deleteGalerieBildModalTitle"
+                >
+                  GalerieBild löschen
+                </h5>
+
+                <button
+                  class="close"
+                  style="
+                    background-color: transparent;
+                    outline: none;
+                    border: none;
+                  "
+                  type="button"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h6 style="color: black">Wirklich löschen?</h6>
+                <h6 style="color: black">
+                  Das Galerie Bild wird endgültig gelöscht und kann nicht
+                  wiederhergestellt werden.
+                </h6>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Schließen
+                </button>
+                <button class="btn btn-danger" type="submit">Löschen</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
             </div>
 
     {% endfor %}
@@ -17,13 +182,13 @@
 
 {% if user.is_superuser %}
 <div class="galerie_bild_hinzufuegen">
-    <form action="/addgaleriebild" method="POST"         enctype="multipart/form-data"
+    <form action="/addgaleriebild" method="POST" enctype="multipart/form-data"
 >
 {% csrf_token %}
 {{galerieForm}}
-  <p>* : erforderlich</p>
+  <p style="display:inline-block">* : erforderlich</p>
 
-<button type="submit" class="btn btn-primary">Erstellen</button>
+<button type="submit" class="btn btn-primary btn-sm">Erstellen</button>
 
 </form>
 </div>

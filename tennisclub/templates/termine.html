@@ -170,7 +170,7 @@
 <form action="/createtermin" class="termin_erstellen" method="POST">
     {% csrf_token %}
     {{termineForm}}
-      * : erforderlich
+      <p style="display:inline-block">* : erforderlich</p>
 
     <button class="btn btn-primary" type="submit">Erstellen</button>
 

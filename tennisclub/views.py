@@ -171,6 +171,28 @@ def addgaleriebild_view(request):
         galerieForm = GalerieForm(request.POST, request.FILES)
         if galerieForm.is_valid() and request.user.is_superuser:
             instance = galerieForm.save(commit=False)
+            
             instance.autor = request.user
             instance.save()
+    return redirect('galerie')
+
+def galeriebildbearbeiten_view(request, uuid):
+    bild = Galerie.objects.get(uuid=uuid)
+    if request.method=='POST' and request.user.is_superuser:
+        bild.beschreibung = request.POST.get('editbeschreibung')
+ 
+        if request.POST.get('editdate') != "":
+            bild.date = request.POST.get('editdate')
+        if request.FILES.get('editbild') != None:
+            bild.bild = request.FILES.get('editbild')
+        bild.standort = request.POST.get('editstandort')
+        bild.save()
+        
+    return redirect('galerie')
+
+def galeriebilddelete_view(request, uuid ):
+    bild = Galerie.objects.get(uuid=uuid)
+    
+    if request.method=='POST' and request.user.is_superuser:
+        bild.delete()
     return redirect('galerie')

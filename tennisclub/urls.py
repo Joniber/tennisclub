@@ -59,7 +59,8 @@ urlpatterns = [
 
     path('galerie/', views.galerie_view, name="galerie"),
     path('addgaleriebild', views.addgaleriebild_view, name='addgaleriebild'),
-
+    path('<str:uuid>/galeriebildbearbeiten', views.galeriebildbearbeiten_view, name='galeriebildbearbeiten'),
+    path('<str:uuid>/galeriebilddelete', views.galeriebilddelete_view, name='galeriebilddelete'),
 
 
     

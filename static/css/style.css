@@ -184,10 +184,27 @@ nav > ul {
     height: initial !important;
   }
 
-  .termin_erstellen{
-    position: relative !important;
-    bottom: 0;
+ 
+
+  .galerie{
+    grid-template-columns: 1fr !important;
+    gap: 10px;
   }
+
+  .wrapper{
+    min-height: 90vh;
+  }
+}
+
+.galerie_kein_bild{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 30vh;
+  scale: .5;
 }
 
 .blog_post_detail {
@@ -321,7 +338,20 @@ footer p {
   position: fixed;
   bottom: 0;
   background-color: white;
-  z-index: 1000000;
+  z-index: 100;
+  
+}
+.galerie_bild_hinzufuegen >form, .termin_erstellen > form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.galerie_bild_hinzufuegen p, .termin_erstellen p {
+  margin-bottom: 0 !important;
 }
 
 .modal-dialog {
@@ -398,6 +428,7 @@ footer p {
 .galerie {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  padding-top: 10px;
 }
 
 .galerie_card {

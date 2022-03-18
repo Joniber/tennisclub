@@ -8,8 +8,8 @@ class Termine(models.Model):
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date = models.DateField(verbose_name='Datum')
-    time = models.TimeField(verbose_name='Uhrzeit')
-    location = models.CharField(max_length=100, verbose_name='Standort')
+    time = models.TimeField(verbose_name='Uhrzeit', blank=True)
+    location = models.CharField(max_length=100, verbose_name='Standort', blank=True)
 
     def __str__(self):
         return self.bezeichnung[:30] + '...'
@@ -22,7 +22,7 @@ class BlogPost(models.Model):
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date= models.DateField(verbose_name='Datum')
-    standort = models.CharField(max_length=50)
+    standort = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.titel[:30] + '...'

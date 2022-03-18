@@ -156,6 +156,22 @@ nav > ul {
 
   .teamliste_card {
     width: 90% !important;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .teamliste_info{
+    width: initial !important;
+    align-items: center !important;
+  }
+
+  .team_images{
+    width: 20vw !important;
+  }
+
+  .teamliste {
+    width: 100%;
+
   }
 
   .traglufthalle img {

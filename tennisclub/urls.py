@@ -22,6 +22,7 @@ app_name = 'app'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index_view, name="index"),
+    path('logout', views.logout_view, name='logout'),
     path('kontakt/', views.kontakt_view, name="kontakt"),
     path('verein/', views.verein_view, name="verein"),
     path('verein/beitrag', views.beitrag_view, name="beitrag"),

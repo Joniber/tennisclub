@@ -196,3 +196,10 @@ def galeriebilddelete_view(request, uuid ):
     if request.method=='POST' and request.user.is_superuser:
         bild.delete()
     return redirect('galerie')
+
+
+def logout_view(request):
+
+
+    logout(request)
+    return redirect('index')

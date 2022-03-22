@@ -15,7 +15,7 @@ class TermineForm(forms.ModelForm):
         widgets = {
             'date': DateInput(attrs={
                 'class': "form-control",
-                
+                'placeholder': 'Tag Monat Jahr',
                 }),
             'time': TimeInput(attrs={
                 'class': "form-control",
@@ -39,7 +39,7 @@ class BlogForm(forms.ModelForm):
         widgets = {
             'date': DateInput(attrs={
                 'class': "form-control",
-                
+                'placeholder': 'Tag Monat Jahr',
                 }),
             'bild': forms.FileInput(attrs={
                     'class': "form-control",
@@ -67,6 +67,7 @@ class GalerieForm(forms.ModelForm):
         widgets = {
             'date': DateInput(attrs={
                 'class': "form-control",
+                'placeholder': 'Tag Monat Jahr',
                 }),
             'beschreibung': forms.TextInput(attrs={
                 'class': "form-control",

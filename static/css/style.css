@@ -403,6 +403,7 @@ flex-grow: 1;
 }
 .team_images {
   width: 10vw;
+  min-height: 10vh;
   
 }
 .naechster_termin {

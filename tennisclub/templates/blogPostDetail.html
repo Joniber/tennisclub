@@ -14,7 +14,7 @@
       <p>{{blogPost.inhalt}}</p>
     <p>Von {{blogPost.autor}} am {{blogPost.date}}</p>
 
-      <p>Standort: {{blogPost.standort}}</p>
+      {% if blogPost.standort != None %}<p>Standort: {{blogPost.standort}}</p>{% endif %}
     </div>
     {% if user.is_superuser %}
 
@@ -181,5 +181,115 @@
 
     {% endif %}
   </div>
+</div>
+<hr>
+<div class="kommentare">
+  <h3>Kommentare</h3>
+  <div class="kommentar_hinzuefuegen">
+    <form action="/blog/{{blogPost.uuid}}/kommentarErstellen" method="POST">
+      {% csrf_token %}
+      {{kommentarForm}}
+
+      <p style="display: inline-block;">*: erforderlich</p>
+      <button type="submit" class="btn btn-primary btn-sm">Erstellen</button>
+                </form>
+
+      {% if request.session.error_message != None and request.session.error_message != "" %}
+      <form style="border: 1px red solid" action="/stoperror" method='POST'>
+        {% csrf_token %}
+
+        <button style="display: inline;" class="fabutton" type="submit" > <i style="color:red;" class="fas fa-times-circle"></i></button>
+                Error: {{request.session.error_message}}
+
+      </form>
+      {% endif %}
+      
+  </div>
+  <div class="kommentare_info">
+    Anzahl der Kommentare: {{kommentare.count}}
+  </div>
+  <div class="kommentare_content">
+    <hr>
+    {% for kommentar in kommentare %}
+        <div class="kommentar_card">
+          <h4>{{kommentar.autor}}</h4>
+          <h5>{{kommentar.inhalt}}</h5>
+          <p>{{kommentar.date}}</p>
+        </div>
+        <div class="kommentar_funktion">
+
+          {% if request.user.is_superuser %}
+           <form action="/blog/{{kommentar.uuid}}/kommentarDelete" method="POST">
+        {% csrf_token %}
+        <button
+          type="button"
+          class="btn btn-outline-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteKommentarModal{{kommentar.uuid}}"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+
+        <div
+          class="modal fade"
+          id="deleteKommentarModal{{kommentar.uuid}}"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="deleteKommentarModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5
+                  style="color: black"
+                  class="modal-title"
+                  id="deleteKommentarModalTitle"
+                >
+                  Kommentar löschen
+                </h5>
+
+                <button
+                  class="close"
+                  style="
+                    background-color: transparent;
+                    outline: none;
+                    border: none;
+                  "
+                  type="button"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h6 style="color: black">Wirklich löschen?</h6>
+                <h6 style="color: black">
+                  Der Kommentar wird endgültig gelöscht und kann nicht
+                  wiederhergestellt werden.
+                </h6>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Schließen
+                </button>
+                <button class="btn btn-danger" type="submit">Löschen</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+          {% endif %}
+        </div>
+        <hr>
+    {% endfor %}
+  </div>
+
 </div>
 {% endblock content %}

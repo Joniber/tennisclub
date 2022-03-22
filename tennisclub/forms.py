@@ -32,3 +32,8 @@ class GalerieForm(forms.ModelForm):
         widgets = {
             'date': DateInput()
         }
+
+class KommentarForm(forms.ModelForm):
+    class Meta:
+        model = models.Kommentar
+        fields = ('autor', 'inhalt', 'email',)

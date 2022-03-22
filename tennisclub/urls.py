@@ -63,6 +63,7 @@ urlpatterns = [
     path('<str:uuid>/galeriebildbearbeiten', views.galeriebildbearbeiten_view, name='galeriebildbearbeiten'),
     path('<str:uuid>/galeriebilddelete', views.galeriebilddelete_view, name='galeriebilddelete'),
 
-
-    
+    path('blog/<str:uuid>/kommentarErstellen', views.kommentar_erstellen_view, name="kommentarerstellen"),
+    path('blog/<str:uuid>/kommentarDelete', views.kommentar_delete_view),
+    path('stoperror', views.stoperror_view),
 ]

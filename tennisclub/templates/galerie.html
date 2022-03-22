@@ -184,7 +184,7 @@
 
 {% if user.is_superuser %}
 <div class="galerie_bild_hinzufuegen">
-    <form  id="galerie_bild_hinzufuegen_wrapper" action="/addgaleriebild" method="POST" enctype="multipart/form-data"
+    <form  id="galerie_bild_hinzufuegen_wrapper" action="/addgaleriebild" method="POST" enctype="multipart/form-data" class="hidden"
 >
 {% csrf_token %}
 {{galerieForm}}
@@ -194,7 +194,7 @@
       <i style="position: absolute; right:5px; top: 5px; color: red; cursor: pointer; font-size: 20px " class="fas fa-times-circle" style="color: red" id="galerie_bild_hinzufuegen_close"></i>
 
 </form>
- <div class="short_hinzufuegen hidden" style="cursor: pointer;" id="galerie_bild_short_hinzufuegen">
+ <div class="short_hinzufuegen " style="cursor: pointer;" id="galerie_bild_short_hinzufuegen">
       <i class="fas fa-plus"></i> Galeriebild hinzufügen
     </div>
 </div>

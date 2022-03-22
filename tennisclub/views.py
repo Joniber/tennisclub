@@ -1,3 +1,4 @@
+import uu
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -158,8 +159,10 @@ def blogPostdelete_view(request, uuid ):
 
 def blogPostDetail_view(request, uuid):
     blogPost = BlogPost.objects.get(uuid=uuid)
-
-    return render(request, 'blogPostDetail.html', {'blogPost': blogPost})
+    kommentare = Kommentar.objects.filter(blogPost_reffering__uuid = uuid)
+    kommentarForm = KommentarForm
+    
+    return render(request, 'blogPostDetail.html', {'blogPost': blogPost, 'kommentarForm': kommentarForm, 'kommentare': kommentare})
 
 def galerie_view(request):
     galerie = Galerie.objects.all()
@@ -203,3 +206,37 @@ def logout_view(request):
 
     logout(request)
     return redirect('index')
+
+def kommentar_erstellen_view(request, uuid):
+    if request.method == 'POST':
+        kommentarForm = KommentarForm(request.POST)
+        print(kommentarForm)
+        if kommentarForm.is_valid():
+            instance = kommentarForm.save(commit=False)
+            instance.blogPost_reffering = BlogPost.objects.get(uuid=uuid)
+            print(instance.blogPost_reffering)
+            instance.save()
+            if 'error_message' in request.session:
+                del request.session['error_message']
+        else:
+            request.session['error_message'] = 'Bitte trage eine valide Email ein'
+            return redirect('/blog/' + uuid)
+    return redirect('/blog/'+ uuid)
+
+def kommentar_delete_view(request, uuid):
+    if request.method == 'POST' and request.user.is_superuser:
+        kommentar = Kommentar.objects.get(uuid=uuid)
+
+        url = kommentar.blogPost_reffering.uuid
+       
+        kommentar.delete()
+    return redirect('/blog/'+ str(url))
+
+def stoperror_view(request):
+    if 'error_message' in request.session:
+                del request.session['error_message']
+
+    url = request.META.get('HTTP_REFERER')
+    return redirect(url)
+
+    

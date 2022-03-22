@@ -38,6 +38,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0px 10px 0px 0px;
+  gap: 15px;
 }
 
 header h2 {
@@ -58,6 +59,8 @@ header h2 {
   align-items: center;
   gap: 15px;
   padding-left: 10px;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 .logo_name {
   font-size: 3vmin;
@@ -74,6 +77,8 @@ header h2 {
 nav {
   display: flex;
   align-items: center;
+  flex-grow: 1;
+flex-basis: 0;
   height: 100%;
 }
 
@@ -81,12 +86,12 @@ nav > ul {
   display: flex;
   align-items: center;
   gap: 10px;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
   height: 100%;
   margin: 0 !important;
   padding: 0 !important;
-  flex-wrap: wrap;
+  
 }
 
 .container {
@@ -99,102 +104,7 @@ nav > ul {
   max-height: 90vh;
 }
 
-@media screen and (max-width: 800px) {
-  nav > ul {
-    display: none;
-  }
-  nav {
-    display: none;
-    height: 0;
-  }
 
-  .courts_link {
-    font-size: 15px !important;
-  }
-
-  nav.active > ul {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
-  nav.active {
-    display: flex;
-    height: fit-content;
-    flex-direction: column;
-    position: absolute;
-    top: 10vh;
-    background-color: beige;
-    width: 100vw;
-    padding-bottom: 10px;
-  }
-
-  .fa-bars,
-  .fa-times {
-    display: block !important;
-  }
-
-  .footer {
-    flex-direction: column;
-  }
-  .footer > ul {
-    text-align: center;
-  }
-
-  .blog_posts_homepage {
-    display: flex !important;
-    flex-direction: column;
-  }
-  .blog_posts{
-    grid-template-columns: 1fr !important;
-    margin-bottom: 0vh !important;
-  }
-
-
-  .blog_posts_homepage .blog_post {
-    border-right: 2px solid orange !important;
-    border-bottom: 0 !important;
-  }
-
-  .blog_posts_homepage .blog_post:last-child {
-    border-bottom: 2px solid orange !important;
-  }
-
-  .teamliste_card {
-    width: 90% !important;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .teamliste_info{
-    width: initial !important;
-    align-items: center !important;
-  }
-
-  .team_images{
-    width: 20vw !important;
-  }
-
-  .teamliste {
-    width: 100%;
-
-  }
-
-  .traglufthalle img {
-    width: 90% !important;
-    height: initial !important;
-  }
-
- 
-
-  .galerie{
-    grid-template-columns: 1fr !important;
-    gap: 10px;
-  }
-
-  .wrapper{
-    min-height: 90vh;
-  }
-}
 
 
 
@@ -223,6 +133,9 @@ nav > ul {
   display: none;
   font-size: 2.5rem;
   cursor: pointer;
+  flex-grow: 1;
+flex-basis: 0;
+justify-content: flex-end;
 }
 
 .fa-times {
@@ -230,6 +143,9 @@ nav > ul {
   font-size: 2.5rem;
   cursor: pointer;
   display: none;
+  flex-grow: 1;
+flex-basis: 0;
+justify-content: flex-end;
 }
 
 .slide_bild {
@@ -435,7 +351,7 @@ footer p {
 
 .galerie {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr ;
   padding-top: 10px;
   margin-bottom: 10vh;
 }
@@ -444,8 +360,17 @@ footer p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
+.galerie_card img{
+  height: initial;
 
+
+}
+.galerie_card p{
+  margin: 0;
+  display: inline;
+}
 .teamliste {
   align-items: center;
   display: flex;
@@ -457,23 +382,28 @@ footer p {
   margin: 0;
 }
 .teamliste_card {
-  width: 70%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .teamliste_info {
-  width: 20vw;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 .teamliste_info p {
   margin: 0;
 }
-
+.team_images_div{
+flex-grow: 1;
+  flex-basis: 0;
+}
 .team_images {
   width: 10vw;
+  
 }
 .naechster_termin {
   width: 100%;
@@ -510,5 +440,131 @@ footer p {
 
 .traglufthalle_intro {
   padding-left: 15px;
+}
+
+.short_hinzufuegen{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.kommentare{
+  padding: 5px;
+}
+
+.fabutton {
+  background: none;
+  padding: 0px;
+  border: none;
+}
+
+
+@media screen and (max-width: 800px) {
+  nav > ul {
+    display: none;
+  }
+  nav {
+    display: none;
+    height: 0;
+  }
+
+  .courts_link {
+    font-size: 15px !important;
+  }
+
+  nav.active > ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  nav.active {
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+    position: absolute;
+    top: 10vh;
+    background-color: beige;
+    width: 100vw;
+    padding-bottom: 10px;
+  }
+
+  .fa-bars,
+  .fa-times {
+    display: flex !important;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+  .footer > ul {
+    text-align: center;
+  }
+
+  .blog_posts_homepage {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .blog_posts{
+    grid-template-columns: 1fr !important;
+    margin-bottom: 0vh !important;
+  }
+
+
+  .blog_posts_homepage .blog_post {
+    border-right: 2px solid orange !important;
+    border-bottom: 0 !important;
+  }
+
+  .blog_posts_homepage .blog_post:last-child {
+    border-bottom: 2px solid orange !important;
+  }
+
+  .teamliste_card {
+    width: 90% !important;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .teamliste_info{
+    width: initial !important;
+    align-items: center !important;
+  }
+
+  .team_images{
+    width: 20vw !important;
+  }
+
+  .teamliste {
+    width: 100%;
+
+  }
+
+  .traglufthalle img {
+    width: 90% !important;
+    height: initial !important;
+  }
+
+ 
+
+  .galerie{
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .wrapper{
+    min-height: 90vh;
+  }
+
+  .galerie_card img {
+    height: initial ;
+    width: 100%;
+
+  }
+  .galerie_card{
+    height: fit-content;
+    width: fit-content;
+  }
 }
 

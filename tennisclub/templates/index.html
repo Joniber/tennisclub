@@ -142,7 +142,11 @@ Die Küche ist großzügig angelegt, technisch auf dem neuesten Stand, wobei ich
       <li><a href="tennis/schule">Schule</a></li>
     </ul>
   </div>
-  <p>© 2010-2022, Tennis Club Hallstadt - Webmaster</p>
+  {% if user.is_superuser %}  <a href="/logout"><p>© 2010-2022, Tennis Club Hallstadt - Webmaster</p></a>
+  {% else %}
+  <a href="/login"><p>© 2010-2022, Tennis Club Hallstadt - Webmaster</p></a>
+  {% endif %}
+
 </footer>
 
 <script src="{%static 'js/slide.js'%}"></script>

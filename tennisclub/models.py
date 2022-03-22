@@ -1,3 +1,4 @@
+from datetime import date
 from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
@@ -39,4 +40,13 @@ class Galerie(models.Model):
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     standort = models.CharField(blank=True, max_length=50, verbose_name='Standort', null=True)
+
+class Kommentar(models.Model):
+    autor = models.CharField(max_length=100, verbose_name='Anzeigename *')
+    inhalt = models.CharField(max_length=200, verbose_name='Inhalt *')
+    date = models.DateField(auto_now_add=True)
+    blogPost_reffering = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+    email = models.EmailField(verbose_name='Email *', default='')
+
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     

@@ -202,6 +202,7 @@
   method="POST"
   enctype="multipart/form-data"
   id="blog_post_hinzufuegen_wrapper"
+  class="hidden"
 >
   {% csrf_token %} {{blogForm}}
     <p style="display:inline-block"> * : erforderlich</p>
@@ -210,7 +211,7 @@
         <i style="position: absolute; right:5px; top: 5px; color: red; cursor: pointer; font-size: 20px " class="fas fa-times-circle" style="color: red" id="blog_post_hinzufuegen_close"></i>
 
 </form>
-<div class="short_hinzufuegen hidden" style="cursor: pointer;" id="blog_post_short_hinzufuegen">
+<div class="short_hinzufuegen " style="cursor: pointer;" id="blog_post_short_hinzufuegen">
       <i class="fas fa-plus"></i> Blog Post hinzufügen
     </div>
 </div>

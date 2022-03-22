@@ -174,7 +174,7 @@
   
   {% if user.is_superuser %}
   <div class="termin_erstellen">
-    <form action="/createtermin" method="POST" id="termin_hinzufuegen_wrapper">
+    <form action="/createtermin" method="POST" id="termin_hinzufuegen_wrapper" class="hidden">
       {% csrf_token %} {{termineForm}}
       <p style="display: inline-block">* : erforderlich</p>
 
@@ -194,7 +194,7 @@
       ></i>
     </form>
     <div
-      class="short_hinzufuegen hidden"
+      class="short_hinzufuegen "
       style="cursor: pointer"
       id="termin_short_hinzufuegen"
     >

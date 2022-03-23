@@ -2,11 +2,15 @@
   --default-color: orange;
   --bg-color: white;
   --font-color: black;
+  
 }
 
 html {
   scroll-behavior: smooth;
   min-height: 100%;
+  --hover-color: orangered;
+  --focus-color: red;
+  
 }
 
 body {
@@ -20,7 +24,19 @@ ul {
   padding: 0 !important;
 }
 a {
-  color: orange;
+  color: var(--default-color);
+}
+
+a:focus {
+  color: var(--focus-color);
+}
+
+a:hover {
+  color: var(--hover-color)
+}
+
+.nohovernofocus:hover, .nohovernofocus:focus{
+  color: var(--default-color) !important;
 }
 
 nav a {
@@ -31,7 +47,7 @@ header {
   width: 100%;
   background-color: beige;
   z-index: 10000;
-  color: black;
+  color: var(--font-color);
   height: 10vh;
   position: fixed;
   display: flex;
@@ -73,6 +89,10 @@ header h2 {
   text-decoration: none !important;
   box-sizing: border-box;
 }
+::selection {
+  color: black;
+  background: var(--default-color);
+}
 
 nav {
   display: flex;
@@ -101,6 +121,7 @@ nav > ul {
 
 .slide {
   max-height: 90vh;
+  min-height: calc(initial + 10vh);
 }
 
 .hidden {
@@ -153,16 +174,17 @@ nav > ul {
 
 .slide .main_link {
   position: absolute;
-  top: 11vh;
-  right: 10px;
   z-index: 1000;
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
-  text-shadow: 2px 2px black;
+  text-shadow: 2px 2px var(--font-color);
+  width: 100%;
+  top: 0;
+  text-align: center;
+  height: 100%;
 }
 
 .willkommenstext {
@@ -208,8 +230,8 @@ nav > ul {
 footer {
   padding: 30px;
   padding-bottom: 0 !important;
-  background-color: black;
-  color: white;
+  background-color: var(--font-color);
+  color: var(--bg-color);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -253,7 +275,7 @@ footer p {
   margin-top: 5px;
   position: fixed;
   bottom: 0;
-  background-color: white;
+  background-color: var(--bg-color);
   z-index: 100;
 }
 .galerie_bild_hinzufuegen > form,
@@ -289,13 +311,24 @@ footer p {
   padding: 5px;
 }
 
+.blog_post_homepage_3_grid{
+  --grid-blog-homepage: repeat(3, 1fr);
+}
+.blog_post_homepage_2_grid{
+  --grid-blog-homepage: repeat(2, 1fr);
+}
+
+.blog_post_homepage_1_grid{
+  --grid-blog-homepage: repeat(1, 1fr);
+}
+
+
 .blog_posts_homepage {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin-bottom: 10vh;
+  grid-template-columns: var(--grid-blog-homepage);
   padding: 5px;
   width: 100%;
-  background-color: white;
+  background-color: var(--bg-color);
   z-index: 100;
 }
 
@@ -308,7 +341,7 @@ footer p {
 }
 
 .blog_posts_homepage .blog_post:last-child {
-  border-right: 2px solid orange !important;
+  border-right: 2px solid var(--default-color) !important;
 }
 
 .blog_posts_homepage .blog_post .blog_post_card {
@@ -326,7 +359,7 @@ footer p {
 }
 
 .courts_link {
-  color: orange;
+  color: var(--default-color);
   font-size: 30px;
 }
 
@@ -406,6 +439,23 @@ footer p {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-bottom: 5px;
+}
+
+.naechster_termin > a {
+  width: 100%;
+  padding: 0 5px;
+}
+
+.naechster_termin .termin_card{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 2px solid var(--default-color);
+  gap: 15px;
+  width: 100%;
+  justify-content: center;
+  padding: 10px;
 }
 
 .termin_card {
@@ -506,12 +556,12 @@ footer p {
   }
 
   .blog_posts_homepage .blog_post {
-    border-right: 2px solid orange !important;
+    border-right: 2px solid var(--default-color) !important;
     border-bottom: 0 !important;
   }
 
   .blog_posts_homepage .blog_post:last-child {
-    border-bottom: 2px solid orange !important;
+    border-bottom: 2px solid var(--default-color) !important;
   }
 
   .teamliste_card {
@@ -554,5 +604,13 @@ footer p {
   .galerie_card {
     height: fit-content;
     width: fit-content;
+  }
+
+  .slide{
+    height: 30vh;
+  }
+  
+  .slide .main_link{
+    height: 30vh ;
   }
 }

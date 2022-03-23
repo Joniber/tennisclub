@@ -35,11 +35,11 @@
   Vordergrund, obwohl Blau die eigentliche Hausfarbe, um nicht zu sagen
   Lieblingsfarbe ist. <br />
 
-Vor kurzem habe ich mir ein neues Outfit zulegen müssen, nachdem mein einstiges Zuhause Feuer fing. Ich habe mich neu, und der Zeit entsprechend modern und attraktiv eingekleidet. Mit einem gewissen selbstbewussten Stolz glaube ich, vom Äußeren sehr dazu gewonnen zu haben. Mein neues Zuhause hat einen offenen Charakter: ein einladendes Entree führt jeden in ein mediterran anmutendes Inneres, von dem aus die Blicke ungehindert auf die vor ihm liegenden <a style="color:#bb7264 ; text-decoration:underline !important" href="/tennis/courts"> Sandplätze</a> schweifen können. Acht an der Zahl schmiegen sie sich an eine <a style="color:#bb7264; text-decoration:underline !important" href="/tennis/courts"> Halle</a>, welche nach wie vor ein Kernstück meines Zuhauses, fast bin ich geneigt Schmuckstück zu sagen, darstellt. Farblich steht Terrakotta im Vordergrund, obwohl Blau die eigentliche Hausfarbe, um nicht zu sagen Lieblingsfarbe ist. <br>
+Vor kurzem habe ich mir ein neues Outfit zulegen müssen, nachdem mein einstiges Zuhause Feuer fing. Ich habe mich neu, und der Zeit entsprechend modern und attraktiv eingekleidet. Mit einem gewissen selbstbewussten Stolz glaube ich, vom Äußeren sehr dazu gewonnen zu haben. Mein neues Zuhause hat einen offenen Charakter: ein einladendes Entree führt jeden in ein mediterran anmutendes Inneres, von dem aus die Blicke ungehindert auf die vor ihm liegenden <a style=" text-decoration:underline !important" href="/tennis/courts"> Sandplätze</a> schweifen können. Acht an der Zahl schmiegen sie sich an eine <a style=" text-decoration:underline !important" href="/tennis/courts"> Halle</a>, welche nach wie vor ein Kernstück meines Zuhauses, fast bin ich geneigt Schmuckstück zu sagen, darstellt. Farblich steht Terrakotta im Vordergrund, obwohl Blau die eigentliche Hausfarbe, um nicht zu sagen Lieblingsfarbe ist. <br>
 
   Sie jedenfalls sind überglücklich, wenn das Haus voll ist.<br />
 
-Die Küche ist großzügig angelegt, technisch auf dem neuesten Stand, wobei ich mir einen eigenständigen Koch, besser Wirtsleute leiste, die es lieben italienisch zu kochen und haben sich den Namen <a style="color:#bb7264; text-decoration:underline !important;" href="https://www.ristorante-il-corallo.de/">Il Corallo</a> gegeben.<br>
+Die Küche ist großzügig angelegt, technisch auf dem neuesten Stand, wobei ich mir einen eigenständigen Koch, besser Wirtsleute leiste, die es lieben italienisch zu kochen und haben sich den Namen <a style=" text-decoration:underline !important;" href="https://www.ristorante-il-corallo.de/">Il Corallo</a> gegeben.<br>
 
   Sogar die IT-Technologie hat bei mir Einzug gehalten. Wer speziell in der
   Halle sein Spielchen treiben will, kann, soll und muss dies jetzt Online
@@ -59,7 +59,7 @@ Die Küche ist großzügig angelegt, technisch auf dem neuesten Stand, wobei ich
   Euer Präsident, <br />
   TCH
 </div>
-<div class="blog_posts_homepage">
+<div class= " {% if blogPosts.count == 2  %} blog_post_homepage_2_grid {% elif blogPosts.count == 1%} blog_post_homepage_1_grid {% else %} blog_post_homepage_3_grid  {% endif %} blog_posts_homepage ">
   {% for blogPost in blogPosts %}
   <div class="blog_post">
     <div class="blog_post_card">
@@ -100,12 +100,18 @@ Die Küche ist großzügig angelegt, technisch auf dem neuesten Stand, wobei ich
 {% if termin != None %}
 
 <div class="naechster_termin">
-  <div class="termin_card">
-    <h1 style="margin-bottom: 10px">Nächster Termin:</h1>
+  <a style="color: black !important" href="/verein/termine">
+    <div class="termin_card">
+    <h2 style="margin-bottom: 10px">Nächster Termin:</h2>
+    <div class="termin_content">
     <h3>{{termin.bezeichnung}}</h3>
     <p>Am {{termin.date}} um {{termin.time}}</p>
     <p>Standort: {{termin.location}}</p>
+    </div>
+
   </div>
+      </a>
+
 </div>
 {% endif %}
 

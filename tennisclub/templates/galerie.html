@@ -183,7 +183,7 @@
 
 
 {% if user.is_superuser %}
-<div class="galerie_bild_hinzufuegen">
+<div class="galerie_bild_hinzufuegen add">
     <form  id="galerie_bild_hinzufuegen_wrapper" action="/addgaleriebild" method="POST" enctype="multipart/form-data" class="hidden"
 >
 {% csrf_token %}

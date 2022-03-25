@@ -2,30 +2,75 @@
 
 <h1>Blog</h1>
 <hr />
-<div class="blog_posts">
-      {%if blogPosts.count == 0%}
-    <div class="galerie_kein_bild">
-    <img style="display: block; margin-left: auto; margin-right:auto" src="{%static 'images/iconmonstr-magnifier-2-240.png'%}" alt="">
-    <h1>Kein Blog Post bisher.</h1>
-    </div>
-    {% endif %}
+<div class="filter">
+  <div id="filter">
+    <i class="fas fa-filter"></i>
+  </div>
 
-  {% for blogPost in blogPosts %}
+  <div class="blog_filter">
+    <form method="get">
+      {{myFilter.form}}
+      <button
+        class="btn btn-primary"
+        style="text-align: center"
+        type="submit"
+        name="submit"
+        value="Search"
+      >
+        <i
+          style="color: white; font-size: 18px; flex-grow: 1; flex-basis: 0"
+          class="fas fa-search"
+        ></i>
+        <br />
+        <p>Filtern</p>
+        <p style="flex-grow: 1; flex-basis: 0"></p>
+      </button>
+    </form>
+  </div>
+</div>
+<div
+  class="blog_posts {%if blogPosts.count == 1%} blog_post_1_grid {% elif blogPosts.count == 2 %} blog_post_2_grid {% else %}blog_post_3_grid {% endif %}"
+>
+  {%if blogPosts.count == 0%}
+  <div class="galerie_kein_bild">
+    <img
+      style="display: block; margin-left: auto; margin-right: auto"
+      src="{%static 'images/iconmonstr-magnifier-2-240.png'%}"
+      alt=""
+    />
+    <h1>Kein Blog Post bisher.</h1>
+  </div>
+  {% endif %} {% for blogPost in blogPosts %}
   <div class="blog_post">
     <div class="blog_post_card">
-      <a style="color:black; display: flex; flex-direction: column; align-items:center" href="/blog/{{blogPost.uuid}}"><h3>{{blogPost.titel}}</h3>
-      <img
-      {% if blogPost.bild.url != '' %}
-        src="../../static{{blogPost.bild.url}}"
-        {% endif %}
-        alt=""
-        style="width: 40%"
+      <a
+        style="
+          color: black;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+        href="/blog/{{blogPost.uuid}}"
+        ><h3>{{blogPost.titel}}</h3>
+        <img
+          {%
+          if
+          blogPost.bild.url
+          !=""
+          %}
+          src="../../static{{blogPost.bild.url}}"
+          {%
+          endif
+          %}
+          alt=""
+          style="width: 40%"
       /></a>
       <p>Von {{blogPost.autor}} am {{blogPost.date}}</p>
 
-      <p style="margin: 0;">{{blogPost.snippet}}</p>
-      <a style="margin-bottom: 5px;" href="/blog/{{blogPost.uuid}}">Weiterlesen</a>
-
+      <p style="margin: 0">{{blogPost.snippet}}</p>
+      <a style="margin-bottom: 5px" href="/blog/{{blogPost.uuid}}"
+        >Weiterlesen</a
+      >
     </div>
     {% if user.is_superuser %}
 
@@ -196,42 +241,64 @@
 </div>
 
 {% if user.is_superuser %}
-<div class="termin_erstellen">
-<form
-  action="/createblogPost"
-  method="POST"
-  enctype="multipart/form-data"
-  id="blog_post_hinzufuegen_wrapper"
-  class="hidden"
->
-  {% csrf_token %} {{blogForm}}
-    <p style="display:inline-block"> * : erforderlich</p>
+<div class="termin_erstellen add">
+  <form
+    action="/createblogPost"
+    method="POST"
+    enctype="multipart/form-data"
+    id="blog_post_hinzufuegen_wrapper"
+    class="hidden"
+  >
+    {% csrf_token %} {{blogForm}}
+    <p style="display: inline-block">* : erforderlich</p>
 
-  <button class="btn btn-primary btn-sm" type="submit">Erstellen</button>
-        <i style="position: absolute; right:5px; top: 5px; color: red; cursor: pointer; font-size: 20px " class="fas fa-times-circle" style="color: red" id="blog_post_hinzufuegen_close"></i>
-
-</form>
-<div class="short_hinzufuegen " style="cursor: pointer;" id="blog_post_short_hinzufuegen">
-      <i class="fas fa-plus"></i> Blog Post hinzufügen
-    </div>
+    <button class="btn btn-primary btn-sm" type="submit">Erstellen</button>
+    <i
+      style="
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        color: red;
+        cursor: pointer;
+        font-size: 20px;
+      "
+      class="fas fa-times-circle"
+      style="color: red"
+      id="blog_post_hinzufuegen_close"
+    ></i>
+  </form>
+  <div
+    class="short_hinzufuegen"
+    style="cursor: pointer"
+    id="blog_post_short_hinzufuegen"
+  >
+    <i class="fas fa-plus"></i> Blog Post hinzufügen
+  </div>
 </div>
 
-{% endif %} {% endblock content %}
-{% block script %}
+{% endif %} {% endblock content %} {% block script %}
 <script>
+  close = document.getElementById('blog_post_hinzufuegen_close');
+  show = document.getElementById('blog_post_short_hinzufuegen');
 
-  close = document.getElementById('blog_post_hinzufuegen_close')
-  show = document.getElementById('blog_post_short_hinzufuegen')
+  close.onclick = function () {
+    document
+      .getElementById('blog_post_hinzufuegen_wrapper')
+      .classList.add('hidden');
+    show.classList.remove('hidden');
+  };
+  show.onclick = function () {
+    document
+      .getElementById('blog_post_hinzufuegen_wrapper')
+      .classList.remove('hidden');
+    show.classList.add('hidden');
+  };
+  let filterbtn = document.getElementById('filter');
 
-  close.onclick = function(){
-    document.getElementById('blog_post_hinzufuegen_wrapper').classList.add('hidden')
-    show.classList.remove('hidden')
-  }
-  show.onclick = function(){
-      document.getElementById('blog_post_hinzufuegen_wrapper').classList.remove('hidden')
-      show.classList.add('hidden')
+  filterbtn.onclick = function () {
+    filterbtn.classList.toggle('active');
+  };
 
-  }
-
+  
 </script>
 {% endblock script %}

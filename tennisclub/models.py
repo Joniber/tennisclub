@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 import uuid
 
 class Termine(models.Model):
-    bezeichnung = models.CharField(max_length=50, verbose_name='Bezeichnung *')
+    bezeichnung = models.CharField(max_length=100, verbose_name='Bezeichnung *')
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date = models.DateField(verbose_name='Datum *')
@@ -16,14 +16,14 @@ class Termine(models.Model):
         return self.bezeichnung[:30] + '...'
 
 class BlogPost(models.Model):
-    titel = models.CharField(max_length=50, verbose_name='Titel *')
+    titel = models.CharField(max_length=100, verbose_name='Titel *')
     creation = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
     inhalt = models.CharField(max_length=2000, verbose_name='Inhalt *')
     bild = models.ImageField(blank=True, default="tennisball.png")
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date= models.DateField(verbose_name='Datum *')
-    standort = models.CharField(max_length=50, blank=True, null=True)
+    standort = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.titel[:30] + '...'
@@ -37,9 +37,8 @@ class Galerie(models.Model):
     beschreibung = models.CharField(blank=True, max_length=100, verbose_name='Beschreibung', null=True)
     creation = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
     date= models.DateField(verbose_name='Datum', blank=True, null=True)
-
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    standort = models.CharField(blank=True, max_length=50, verbose_name='Standort', null=True)
+    standort = models.CharField(blank=True, max_length=100, verbose_name='Standort', null=True)
 
 class Kommentar(models.Model):
     autor = models.CharField(max_length=100, verbose_name='Anzeigename *')

@@ -173,7 +173,7 @@
   </div>
   
   {% if user.is_superuser %}
-  <div class="termin_erstellen">
+  <div class="termin_erstellen add">
     <form action="/createtermin" method="POST" id="termin_hinzufuegen_wrapper" class="hidden">
       {% csrf_token %} {{termineForm}}
       <p style="display: inline-block">* : erforderlich</p>

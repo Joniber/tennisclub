@@ -6,6 +6,7 @@ from datetime import date, timedelta
 from django.contrib.auth import login, logout
 from .models import *
 from .forms import *
+from .filters import *
 
 def index_view(request):
     startdate = date.today()
@@ -116,9 +117,10 @@ def blog_view(request):
 
     blogForm = BlogForm()
     blogPosts = BlogPost.objects.all().order_by('-date')
-    print(blogPosts)
+    myFilter = BlogFilter(request.GET, queryset=blogPosts) 
+    blogPosts = myFilter.qs
 
-    return render(request, 'blog.html', {'blogForm': blogForm, 'blogPosts': blogPosts})
+    return render(request, 'blog.html', {'blogForm': blogForm, 'blogPosts': blogPosts, 'myFilter': myFilter, })
 
 
 def createblogPost_view(request):

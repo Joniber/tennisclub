@@ -209,6 +209,8 @@ nav > ul {
   background-color: var(--bg-color);
   padding: 20px;
   padding-top: 10vh;
+  text-align: justify;
+  font-size: 1.3rem;
 }
 
 .sitemap {
@@ -715,6 +717,6 @@ footer p {
   }
 
   .slide .main_link {
-    height: 30vh;
+    height: 40vh;
   }
 }

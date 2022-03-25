@@ -4,7 +4,9 @@
 <hr />
 <div class="filter">
   <div id="filter">
-    <i class="fas fa-filter"></i>
+    <i id="filtericon" class="fas fa-filter"></i>
+            <a id="filterreset" href="/blog">Filter zurücksetzen</a>
+        {{blogPosts.count}} Artikel
   </div>
 
   <div class="blog_filter">
@@ -17,13 +19,9 @@
         name="submit"
         value="Search"
       >
-        <i
-          style="color: white; font-size: 18px; flex-grow: 1; flex-basis: 0"
-          class="fas fa-search"
-        ></i>
-        <br />
+        <i class="fas fa-search"></i>
+
         <p>Filtern</p>
-        <p style="flex-grow: 1; flex-basis: 0"></p>
       </button>
     </form>
   </div>
@@ -278,6 +276,13 @@
 
 {% endif %} {% endblock content %} {% block script %}
 <script>
+  let filterbtn = document.getElementById('filtericon');
+  let filter = document.getElementById('filter')
+  filterbtn.onclick = function () {
+    filter.classList.toggle('active');
+    filterreset.classList.toggle('active');
+
+  };
   close = document.getElementById('blog_post_hinzufuegen_close');
   show = document.getElementById('blog_post_short_hinzufuegen');
 
@@ -293,12 +298,5 @@
       .classList.remove('hidden');
     show.classList.add('hidden');
   };
-  let filterbtn = document.getElementById('filter');
-
-  filterbtn.onclick = function () {
-    filterbtn.classList.toggle('active');
-  };
-
-  
 </script>
 {% endblock script %}

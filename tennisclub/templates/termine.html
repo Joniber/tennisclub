@@ -2,6 +2,33 @@
 
 <h1>Termine</h1>
 <hr />
+
+<div class="filter">
+  <div id="filter">
+    <i id="filtericon" class="fas fa-filter"></i>
+        <a id="filterreset" href="/verein/termine">Filter zurücksetzen</a>
+        {{termine.count}} Termine
+  </div>
+
+  <div class="blog_filter">
+    <form method="get">
+      {{myFilter.form}}
+      <button
+        class="btn btn-primary"
+        style="text-align: center"
+        type="submit"
+        name="submit"
+        value="Search"
+        id="filtersubmit"
+      >
+        <i class="fas fa-search"></i>
+
+        <p>Filtern</p>
+      </button>
+    </form>
+  </div>
+</div>
+<hr>
 <div class="termine">
   {% for termin in termine %}
   <div class="termin">
@@ -203,6 +230,16 @@
   </div>
   {% endif %} {% endblock content %} {% block script %}
   <script>
+    let filtersubmit = document.getElementById('filtersubmit')
+    let filterbtn = document.getElementById('filtericon');
+  let filter = document.getElementById('filter')
+  let filterreset = document.getElementById('filterreset')
+  filterbtn.onclick = function () {
+    filter.classList.toggle('active');
+    filterreset.classList.toggle('active');
+  };
+  
+  
     close = document.getElementById('termin_hinzufuegen_close');
     show = document.getElementById('termin_short_hinzufuegen');
 

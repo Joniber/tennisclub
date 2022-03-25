@@ -32,11 +32,12 @@ def rückblick_view(request):
 def termine_view(request):
     
     termine = Termine.objects.all().order_by('date')
-    
+    myFilter = TerminFilter(request.GET, queryset=termine) 
+    termine = myFilter.qs
 
     termineForm = TermineForm()
 
-    return render(request, 'termine.html', {'termine':termine, 'termineForm': termineForm})
+    return render(request, 'termine.html', {'termine':termine, 'termineForm': termineForm, 'myFilter': myFilter})
 
 
 def createtermin_view(request):
